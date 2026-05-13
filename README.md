@@ -17,6 +17,22 @@
 | 繁體中文 | https://g-session.github.io/aircal-privacy/privacy/zh-Hant/ |
 | Español | https://g-session.github.io/aircal-privacy/privacy/es/ |
 | Português | https://g-session.github.io/aircal-privacy/privacy/pt/ |
+| Français | https://g-session.github.io/aircal-privacy/privacy/fr/ |
+| Deutsch | https://g-session.github.io/aircal-privacy/privacy/de/ |
+| Bahasa Indonesia | https://g-session.github.io/aircal-privacy/privacy/id/ |
+| Italiano | https://g-session.github.io/aircal-privacy/privacy/it/ |
+| Tiếng Việt | https://g-session.github.io/aircal-privacy/privacy/vi/ |
+| Русский | https://g-session.github.io/aircal-privacy/privacy/ru/ |
+| ไทย | https://g-session.github.io/aircal-privacy/privacy/th/ |
+| Polski | https://g-session.github.io/aircal-privacy/privacy/pl/ |
+| Nederlands | https://g-session.github.io/aircal-privacy/privacy/nl/ |
+| Svenska | https://g-session.github.io/aircal-privacy/privacy/sv/ |
+| Čeština | https://g-session.github.io/aircal-privacy/privacy/cs/ |
+| Norsk bokmål | https://g-session.github.io/aircal-privacy/privacy/nb/ |
+| Magyar | https://g-session.github.io/aircal-privacy/privacy/hu/ |
+| Bahasa Melayu | https://g-session.github.io/aircal-privacy/privacy/ms/ |
+
+英語の地域変種 (en_GB / en_AU / en_CA) は専用 ARB を持たず、共通の `en` (US) にフォールバックするため公開 URL も `/privacy/en/` 1 つに集約している。
 
 ### 利用規約
 
@@ -29,6 +45,20 @@
 | 繁體中文 | https://g-session.github.io/aircal-privacy/terms/zh-Hant/ |
 | Español | https://g-session.github.io/aircal-privacy/terms/es/ |
 | Português | https://g-session.github.io/aircal-privacy/terms/pt/ |
+| Français | https://g-session.github.io/aircal-privacy/terms/fr/ |
+| Deutsch | https://g-session.github.io/aircal-privacy/terms/de/ |
+| Bahasa Indonesia | https://g-session.github.io/aircal-privacy/terms/id/ |
+| Italiano | https://g-session.github.io/aircal-privacy/terms/it/ |
+| Tiếng Việt | https://g-session.github.io/aircal-privacy/terms/vi/ |
+| Русский | https://g-session.github.io/aircal-privacy/terms/ru/ |
+| ไทย | https://g-session.github.io/aircal-privacy/terms/th/ |
+| Polski | https://g-session.github.io/aircal-privacy/terms/pl/ |
+| Nederlands | https://g-session.github.io/aircal-privacy/terms/nl/ |
+| Svenska | https://g-session.github.io/aircal-privacy/terms/sv/ |
+| Čeština | https://g-session.github.io/aircal-privacy/terms/cs/ |
+| Norsk bokmål | https://g-session.github.io/aircal-privacy/terms/nb/ |
+| Magyar | https://g-session.github.io/aircal-privacy/terms/hu/ |
+| Bahasa Melayu | https://g-session.github.io/aircal-privacy/terms/ms/ |
 
 App Store Connect / Google Play Console の言語別 URL 欄に登録する。
 
