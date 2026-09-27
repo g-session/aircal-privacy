@@ -109,35 +109,49 @@
 <h2>服務特有之處理</h2>
 <h3>第 8 條　服務特有之處理</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>日曆與行程資訊：一般行程的內容在裝置內處理；與 Google 日曆連結時，透過 Google Calendar API 取得及更新。一般行程內容不會儲存於 Firebase。另行儲存的行程範本（標題、地點、備註、重複設定及通知設定）與應用程式設定會儲存於 Firebase，以提供裝置間同步等服務。取得的資訊用於提供下列功能：</li>
+<li><span class="num">1.</span>日曆、行程、帳號及設定</li>
 </ol>
-<ul class="bullet">
-<li>日曆之顯示與編輯</li>
-<li>行程之顯示與編輯</li>
-</ul>
+<p>為顯示、建立、編輯、通知及同步日曆與行程，本服務會處理裝置內的日曆資訊，以及透過 Google Calendar API 取得與更新的 Google 日曆資訊。若您連結 Google 等外部日曆，相關資訊亦依各服務提供者之隱私權政策管理。</p>
+<p>為進行帳號驗證、同步個人資料與 App 設定、提供共用日曆功能及儲存行程範本，本服務使用 Firebase Authentication 及 Firestore。依您使用的功能，會儲存個人資料設定、裝置資訊、共用相關資訊，以及行程範本的標題、地點、備註、重複與通知設定等。</p>
+<p>為提供連結及共用功能，與 Google 連結所需的驗證資訊（存取權杖及更新權杖）會儲存於本公司管理的 Firebase。本公司不會取得或儲存您的 Google 帳號密碼。</p>
 <ol class="numbered">
-<li><span class="num">2.</span>使用者若將日曆與外部雲端服務（iCloud、Google 日曆、Outlook 等）連結，該等資訊將依各服務提供者之隱私權政策進行管理。</li>
-<li><span class="num">3.</span>關於 Gmail 帳號資訊之處理</li>
+<li><span class="num">2.</span>AI 建立行程、圖片分析及顏色建議</li>
 </ol>
-<p>本公司僅透過 Google 之 OAuth 認證存取必要最小範圍之資訊（日曆共用功能所需範圍）。不會取得或儲存使用者密碼。所取得之資訊僅用於提供共用功能之目的，不會提供予第三人。</p>
+<p>AI 建立與分析行程時，會使用您輸入或提供的文字與圖片，將其轉換為行程候選。</p>
+<p>使用語音輸入時，會透過裝置的語音辨識功能將語音轉換為文字。為建立與分析行程，轉換後的文字可能會傳送至 Apple 的 Private Cloud Compute，或經由 Firebase Cloud Functions 傳送至 Google Gemini。語音辨識的處理方式依裝置、作業系統的功能及設定而異。</p>
+<p>您直接輸入的文字，以及為建立行程而提供的圖片，同樣會由 Apple 的 Private Cloud Compute，或經由 Firebase Cloud Functions 由 Google Gemini 處理。實際的處理位置依裝置支援狀況等而異，簡單的文字可能會在裝置內處理。</p>
+<p>行程顏色建議在支援的裝置與作業系統上，通常於裝置內處理。可用的功能與處理方式依裝置、作業系統及設定而異。</p>
 <ol class="numbered">
-<li><span class="num">4.</span>與通知相關之資料</li>
+<li><span class="num">3.</span>付費功能之購買及使用資格</li>
 </ol>
-<p>為提供行程提醒或推播通知，將使用裝置內之行程資訊與通知設定。通知所使用之資訊僅用於提供本服務之功能，不會提供予第三人。通知之傳送可能利用外部通知服務（例如：Firebase Cloud Messaging、APNs），惟其中不含可識別個人之內容，並經安全處理。</p>
+<p>為驗證、回復購買及管理付費功能的使用資格，本服務使用 RevenueCat，並傳送使用者識別碼及購買資訊等。</p>
 <ol class="numbered">
-<li><span class="num">5.</span>撤回廣告同意之方法</li>
+<li><span class="num">4.</span>邀請連結及來源衡量</li>
 </ol>
-<p>本服務依使用者同意，為投放廣告取得廣告識別碼（如 IDFA 等）。若希望撤回廣告同意，請以下列方式處理：</p>
-<ul class="bullet">
-<li>解除安裝 App：將 App 從裝置移除後，為投放廣告目的之資訊取得將停止。</li>
-<li>使用付費版：升級至付費版後，廣告投放將停止，亦不再為廣告目的收集資訊。</li>
-</ul>
-<p>天氣使用的位置資訊</p>
-<p>開啟天氣後，我們會在您使用應用程式更新預報時取得目前位置，並透過我們的伺服器（Firebase）傳送至 Apple Weather。裝置儲存最近取得的位置及最長三小時的預報快取，關閉天氣或登出時會將其刪除。我們不會累積位置歷史、在伺服器上永久儲存位置、將位置傳送至分析服務，也不會在背景追蹤位置。</p>
+<p>為建立共用日曆的邀請連結、傳遞邀請資訊及衡量使用者來源，本服務使用 Firebase Cloud Functions 及 AppsFlyer。建立邀請連結時，會將邀請人的顯示名稱、日曆名稱、日曆 ID 及邀請用權杖等傳送至 AppsFlyer。為將來源與 App 使用者對應，也會將登入中的使用者識別碼傳送至 AppsFlyer。此處理亦可能依設定處理裝置資訊、識別碼、IP 位址，以及安裝與連結使用的相關資訊。</p>
 <ol class="numbered">
-<li><span class="num">6.</span>付費功能與購買資訊：本服務使用 RevenueCat Inc. 處理付費功能、購買驗證、還原購買、使用權利管理及購買狀況分析。為此，可能會傳送應用程式內使用者識別資訊（登入時為 Firebase 使用者 ID，未登入時為匿名識別碼）、商品識別碼、購買或訂閱紀錄、購買證明或交易資訊，以及使用權利狀態。信用卡卡號等付款資料由 Apple 或 Google 處理，本應用程式不會取得。RevenueCat Inc. 的相關資料儲存於美國的 AWS。</li>
-<li><span class="num">7.</span>AI 輸入：使用者提供的文字或圖片在需要雲端分析時，會經由 Firebase 傳送至 Google Gemini 進行處理；並非所有 AI 處理都會使用雲端服務。</li>
+<li><span class="num">5.</span>提醒及推播通知</li>
 </ol>
+<p>為提供行程提醒、共用日曆的更新通知及待辦事項通知，本服務會使用裝置內的行程資訊、通知設定及通知權杖。通知透過 Firebase Cloud Messaging（FCM）或 Apple Push Notification service（APNs）傳送。共用通知可能包含行程標題、日期與時間、日曆名稱、顯示名稱及待辦事項名稱等。</p>
+<ol class="numbered">
+<li><span class="num">6.</span>使用狀況、錯誤、效能、設定提供及防止不當使用</li>
+</ol>
+<p>為分析服務使用狀況、確認錯誤、衡量效能、提供 App 設定及防止不當使用，本服務使用 Firebase Analytics、Crashlytics、Performance Monitoring、Remote Config 及 App Check。依啟動與功能使用、設定、同意狀態及裝置環境，會將使用者識別碼、操作事件、App 與裝置資訊、錯誤、效能資訊，以及驗證 App 正當性所需的資訊等傳送至各功能。</p>
+<ol class="numbered">
+<li><span class="num">7.</span>廣告</li>
+</ol>
+<p>為顯示廣告、管理同意及衡量廣告成效，本服務使用 Google AdMob。廣告識別碼等資訊會依您的同意、裝置設定、App 設定及使用環境處理。廣告及同意的管理亦依 Google AdMob 服務提供者之政策辦理。</p>
+<p>您可在裝置設定中變更廣告識別碼的使用許可。付費版會停止顯示廣告。</p>
+<ol class="numbered">
+<li><span class="num">8.</span>地點搜尋</li>
+</ol>
+<p>使用地點搜尋時，會將輸入的搜尋字詞、語言，以及必要時依目前位置設定的搜尋範圍傳送至 Google Places API，以取得地點候選及詳細資訊。取得的資訊用於輸入及顯示行程地點。</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL 預覽及意見回饋</li>
+</ol>
+<p>使用 URL 預覽時，為顯示預覽，裝置會存取該 URL，取得頁面標題、說明及圖片等中繼資料。所存取網站之政策亦適用。</p>
+<p>為顯示公告、說明及個人資料圖片等而從提供來源取得資訊時，亦會產生通訊，提供來源會收到 IP 位址等通訊資訊。</p>
+<p>送出意見回饋時，為回覆及確認問題，會將內文、回覆用電子郵件地址、是否希望回覆、登入中的使用者識別碼、App 與裝置資訊、語言設定、Pro 使用狀況、診斷資訊及附加圖片等傳送至 Firebase。實際傳送的項目依輸入內容及使用環境而異。</p>
 <h3>第 9 條　AI 與自動化</h3>
 <p>本公司雖運用 AI 技術改善服務，但不會將用戶個人資料用於其他 AI 模型之訓練。此外，就 AI 處理內容亦確保透明性。</p>
 <h3>第 10 條　資料刪除</h3>
@@ -169,15 +183,15 @@
 <p>制訂日：2025 年 9 月 17 日</p>
 <p>最後更新日：2026 年 9 月 22 日</p>
 <h3>第 17 條　台灣地區使用者之個人資料保護事項</h3>
-<p>針對台灣地區之使用者，依中華民國個人資料保護法，告知下列事項：</p>
+<p>針對台灣地區之使用者，依中華民國個人資料保護法（PDPA），告知下列事項：</p>
 <ol class="numbered">
 <li><span class="num">1.</span>蒐集機關名稱：Nexus 股份有限公司（Nexus Inc.）</li>
-<li><span class="num">2.</span>蒐集之目的：提供行事曆服務、處理付費功能（aircal Pro）、改善服務品質及使用狀況分析</li>
-<li><span class="num">3.</span>蒐集個人資料之類別：電子郵件地址、Google 帳號識別資訊、行事曆資料、行程範本（標題、地點、備註、重複設定及通知設定）、應用程式設定、裝置識別碼、使用紀錄、付費識別碼及購買紀錄、使用選用功能時的位置資訊、AI 輸入資料（使用者提供的文字及圖片）及診斷資料</li>
-<li><span class="num">4.</span>利用之期間、地區、對象及方式：依第 11 條，於提供服務所必要或法令所定期間內，以自動化方式處理及利用。處理者包括本公司、Google Cloud Firebase（認證、設定同步、分析及當機報告）、Google Gemini（雲端 AI）、Apple Weather（天氣）、Google AdMob（廣告）及 RevenueCat Inc.（付費處理）。處理地區為日本及各提供者之伺服器所在地區；RevenueCat Inc. 的相關伺服器位於美國</li>
+<li><span class="num">2.</span>蒐集之目的：提供日曆服務、處理付費功能（aircal Pro）、改善服務品質及分析使用狀況</li>
+<li><span class="num">3.</span>蒐集個人資料之類別：電子郵件地址、Google 帳號識別資訊、日曆資料、裝置識別碼、使用紀錄</li>
+<li><span class="num">4.</span>利用之期間、地區、對象及方式：於您使用本服務期間，由本公司於日本及 Google Cloud／Firebase 伺服器所在地區，以自動化方式處理及利用</li>
 <li><span class="num">5.</span>當事人得行使之權利：您得依個人資料保護法第 3 條，請求查詢或閱覽、製給複製本、補充或更正、停止蒐集處理或利用、刪除您的個人資料。行使方式請透過本政策所載聯絡方式與我們聯繫</li>
 <li><span class="num">6.</span>拒絕提供之影響：若您拒絕提供必要之個人資料，可能無法使用本服務之全部或部分功能</li>
-<li><span class="num">7.</span>國際傳輸：您同意本公司得將您的個人資料傳輸至日本及各提供者之伺服器所在地區進行處理與儲存，包括 Google Cloud Firebase（認證、設定同步、分析及當機報告）、Google Gemini（雲端 AI）、Apple Weather（天氣）、Google AdMob（廣告）及 RevenueCat Inc.（付費處理）；RevenueCat Inc. 的相關資料儲存於美國</li>
+<li><span class="num">7.</span>國際傳輸：您同意本公司得將您的個人資料傳輸至日本及 Google Cloud／Firebase 伺服器所在之國家或地區進行處理與儲存</li>
 <li><span class="num">8.</span>個人資料事故之通知：如發生個人資料遭竊取、竄改、毀損、滅失或洩漏之情事，本公司將依個人資料保護法之規定通知您</li>
 </ol>
 <h3>第 18 條　語言版本</h3>

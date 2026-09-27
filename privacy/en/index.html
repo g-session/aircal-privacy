@@ -109,32 +109,49 @@
 <h2>Service-Specific Handling</h2>
 <h3>Article 8: Service-Specific Handling</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Calendar and event information:</li>
+<li><span class="num">1.</span>Calendars, events, accounts, and settings</li>
 </ol>
-<p>The collected information is used only within the device to provide the following features, and is partially stored on external servers managed by the Company.</p>
-<ul class="bullet">
-<li>Calendar display and editing</li>
-<li>Event display and editing</li>
-</ul>
+<p>To display, create, edit, notify, and sync calendars and events, we handle calendar information on your device and Google Calendar information obtained and updated through the Google Calendar API. If you connect an external calendar such as Google, that information is also managed in accordance with each service provider&#x27;s privacy policy.</p>
+<p>We use Firebase Authentication and Firestore for account authentication, syncing your profile and app settings, shared calendar features, and saving event templates. Depending on the features you use, we store profile settings, device information, sharing-related information, and event template titles, locations, notes, and repeat and notification settings.</p>
+<p>To provide integration and sharing features, we store the authentication credentials required for the Google integration (access tokens and refresh tokens) in Firebase, which we manage. We do not obtain or store your Google account password.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>When a user links their calendar with external cloud services (iCloud, Google Calendar, Outlook, etc.), such information is managed in accordance with each service provider&#x27;s privacy policy.</li>
-<li><span class="num">3.</span>Handling of Gmail account information</li>
+<li><span class="num">2.</span>AI event creation, image analysis, and color suggestions</li>
 </ol>
-<p>The Company accesses only the minimum necessary information (within the scope required for the calendar sharing feature) through Google&#x27;s OAuth authentication. The Company does not obtain or store users&#x27; passwords. The collected information is used solely for providing the sharing feature and is not provided to third parties.</p>
+<p>For AI event creation and analysis, we use the text and images you enter or provide to convert them into event candidates.</p>
+<p>For voice input, your device&#x27;s speech recognition converts speech into text. To create and analyze events, the converted text may be sent to Apple&#x27;s Private Cloud Compute, or to Google Gemini via Firebase Cloud Functions. How speech recognition is processed depends on your device and OS features and settings.</p>
+<p>Text you enter directly and images you provide for event creation are also processed by Apple&#x27;s Private Cloud Compute, or by Google Gemini via Firebase Cloud Functions. Which processor is used depends on factors such as device support, and simple text may be processed on your device.</p>
+<p>Event color suggestions are normally processed on your device on supported devices and OS versions. Available features and processing methods vary by device, OS, and settings.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Notification-related data</li>
+<li><span class="num">3.</span>Purchases of paid features and entitlements</li>
 </ol>
-<p>Device event information and notification settings are used for providing event reminders and push notifications. Information used for notifications is used solely for providing the Service&#x27;s features and is not provided to third parties. External notification services (e.g., Firebase Cloud Messaging, APNs) may be used for sending notifications, but no personally identifiable content is included and processing is done securely.</p>
+<p>To verify and restore purchases and manage entitlements to paid features, we use RevenueCat and send information such as user identifiers and purchase information.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Withdrawal of advertising consent</li>
+<li><span class="num">4.</span>Invitation links and attribution</li>
 </ol>
-<p>The Service obtains advertising identifiers (such as IDFA) for advertising purposes based on user consent. If you wish to withdraw your advertising consent, please use the following methods.</p>
-<ul class="bullet">
-<li>App uninstallation: Deleting the app from your device will stop the collection of information for advertising purposes.</li>
-<li>Using the paid version: Upgrading to the paid version will stop advertising and the collection of information for advertising purposes.</li>
-</ul>
-<p>Location for weather</p>
-<p>When Weather is on, we obtain your current location when updating forecasts while you use the app and send it to Apple Weather through our server (Firebase). The device stores the last retrieved location and forecasts cached for up to three hours; these are deleted when Weather is turned off or you sign out. We do not keep location history, persist locations on our server, send them to analytics, or track location in the background.</p>
+<p>To create invitation links for shared calendars, carry over invitation information, and measure acquisition channels, we use Firebase Cloud Functions and AppsFlyer. When an invitation link is generated, we send information such as the inviter&#x27;s display name, the calendar name, the calendar ID, and an invitation token to AppsFlyer. To associate acquisition with app users, we also send the signed-in user&#x27;s identifier to AppsFlyer. Depending on settings, this processing may also involve device information, identifiers, IP addresses, and information about installs and link usage.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Reminders and push notifications</li>
+</ol>
+<p>To provide event reminders, shared calendar update notifications, and to-do notifications, we use event information on your device, notification settings, and notification tokens. Notifications are sent via Firebase Cloud Messaging (FCM) or Apple Push Notification service (APNs). Shared notifications may include event titles, dates and times, calendar names, display names, and to-do names.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Usage, errors, performance, configuration delivery, and abuse prevention</li>
+</ol>
+<p>To analyze service usage, investigate errors, measure performance, deliver app configuration, and prevent abuse, we use Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config, and App Check. Depending on app launches and feature use, settings, consent, and device environment, we send information such as user identifiers, interaction events, app and device information, errors, performance information, and information needed to verify the app&#x27;s integrity to each service.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Advertising</li>
+</ol>
+<p>We use Google AdMob to display ads, manage consent, and measure ad performance. Advertising identifiers and similar information are handled according to your consent, device settings, app settings, and usage environment. Ad and consent management are also subject to the policies of the Google AdMob service provider.</p>
+<p>You can change permission to use advertising identifiers in your device settings. The paid version stops displaying ads.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Place search</li>
+</ol>
+<p>When you use place search, we send the search terms you enter, the language, and, where needed, a search area based on your current location to the Google Places API to obtain place suggestions and details. The information obtained is used to enter and display event locations.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL previews and inquiries</li>
+</ol>
+<p>When you use URL previews, your device accesses the URL to obtain metadata such as the page title, description, and images in order to display the preview. The policies of the accessed website also apply.</p>
+<p>Communication also occurs when we retrieve information needed to display announcements, help content, profile images, and similar content from their sources, and those sources receive communication information such as your IP address.</p>
+<p>When you submit an inquiry, we send the message body, reply email address, reply preference, the signed-in user identifier, app and device information, language settings, Pro status, diagnostic information, attached images, and similar information to Firebase in order to reply and investigate issues. The items sent vary depending on your input and usage environment.</p>
 <h3>Article 9: AI and Automation</h3>
 <p>The Company uses AI technology to improve the Service, but does not use users&#x27; personal data for training other AI models. The Company also ensures transparency regarding AI processing.</p>
 <h3>Article 10: Data Deletion</h3>
