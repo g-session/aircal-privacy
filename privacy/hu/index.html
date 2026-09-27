@@ -109,32 +109,49 @@
 <h2>A szolgáltatás-specifikus kezelés</h2>
 <h3>8. cikk: A szolgáltatás-specifikus kezelés</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Naptári és eseményinformációk:</li>
+<li><span class="num">1.</span>Naptárak, események, fiókok és beállítások</li>
 </ol>
-<p>A gyűjtött információk kizárólag a készüléken belül használatosak az alábbi funkciók biztosításához, és egy részük a Társaság által kezelt külső szervereken kerül tárolásra.</p>
-<ul class="bullet">
-<li>Naptár megjelenítése és szerkesztése</li>
-<li>Események megjelenítése és szerkesztése</li>
-</ul>
+<p>A naptárak és események megjelenítéséhez, létrehozásához, szerkesztéséhez, értesítések küldéséhez és szinkronizálásához a Társaság a készülékeden található naptárinformációkat, valamint a Google Calendar API segítségével lekért és frissített Google Calendar-információkat kezeli. Ha külső naptárat, például a Google Naptárt kapcsolsz össze, az ilyen információkat az adott szolgáltató adatvédelmi szabályzatának megfelelően is kezelik.</p>
+<p>A Társaság a Firebase Authentication és a Firestore szolgáltatásokat használja a fiókok hitelesítésére, a profilod és az alkalmazásbeállításaid szinkronizálására, a megosztott naptárak funkcióinak biztosítására és az eseménysablonok mentésére. Az általad használt funkcióktól függően a Társaság profilbeállításokat, készülékinformációkat, megosztással kapcsolatos információkat, valamint az eseménysablonok címét, helyét, megjegyzéseit, ismétlődési és értesítési beállításait tárolja.</p>
+<p>Az integrációs és megosztási funkciók biztosításához a Társaság a Google-integrációhoz szükséges hitelesítési adatokat (hozzáférési tokeneket és frissítési tokeneket) a Társaság által kezelt Firebase-ben tárolja. A Társaság nem szerzi meg és nem tárolja a Google-fiókod jelszavát.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Ha a felhasználó a naptárát külső felhőszolgáltatáshoz (iCloud, Google Naptár, Outlook stb.) csatlakoztatja, az ilyen információk az adott szolgáltató adatvédelmi szabályzata szerint kerülnek kezelésre.</li>
-<li><span class="num">3.</span>Gmail-fiókinformációk kezelése</li>
+<li><span class="num">2.</span>Események létrehozása AI-val, képelemzés és színjavaslatok</li>
 </ol>
-<p>A Társaság a Google OAuth-hitelesítésen keresztül csak a minimálisan szükséges információkat (a naptármegosztási funkcióhoz szükséges mértékben) éri el. A Társaság nem szerzi meg és nem tárolja a felhasználó jelszavát. Az így gyűjtött információk kizárólag a megosztási funkció biztosítására szolgálnak, és nem kerülnek átadásra harmadik felek számára.</p>
+<p>A Társaság AI-alapú eseménylétrehozáshoz és -elemzéshez az általad beírt vagy megadott szöveget és képeket eseményjavaslatokká alakítja.</p>
+<p>Hangbevitel esetén a készülékeden működő beszédfelismerés szöveggé alakítja a beszédet. Az események létrehozásához és elemzéséhez az átalakított szöveg elküldhető az Apple Private Cloud Compute szolgáltatásnak, vagy a Firebase Cloud Functions közvetítésével a Google Gemini szolgáltatásnak. A beszédfelismerés feldolgozásának módja a készüléked és az operációs rendszered funkcióitól és beállításaitól függ.</p>
+<p>Az általad közvetlenül beírt szöveget és az események létrehozásához megadott képeket szintén az Apple Private Cloud Compute dolgozza fel, vagy a Firebase Cloud Functions közvetítésével a Google Gemini. Az alkalmazott feldolgozási szolgáltatás olyan tényezőktől függ, mint például a készülék támogatottsága; az egyszerű szöveg feldolgozása a készülékeden is történhet.</p>
+<p>Támogatott készülékek és operációsrendszer-verziók esetén az események színjavaslatai általában a készülékeden kerülnek feldolgozásra. Az elérhető funkciók és feldolgozási módok készülékenként, operációs rendszerenként és beállításonként eltérhetnek.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Értesítésekhez kapcsolódó adatok</li>
+<li><span class="num">3.</span>Fizetős funkciók vásárlása és hozzáférési jogosultságok</li>
 </ol>
-<p>A készülék eseményinformációit és az értesítési beállításokat az esemény-emlékeztetők és push-értesítések biztosításához használjuk. Az értesítéshez használt információk kizárólag a Szolgáltatás funkcióinak biztosítását szolgálják, és nem kerülnek átadásra harmadik felek számára. Az értesítések küldéséhez külső értesítési szolgáltatások (pl. Firebase Cloud Messaging, APNs) használhatók, de személyazonosításra alkalmas tartalom nem szerepel bennük, és a feldolgozás biztonságosan történik.</p>
+<p>A vásárlások ellenőrzéséhez és visszaállításához, valamint a fizetős funkciókhoz való hozzáférési jogosultságok kezeléséhez a Társaság a RevenueCat szolgáltatást használja, és olyan információkat küld el, mint a felhasználói azonosítók és a vásárlási adatok.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Reklámhoz adott hozzájárulás visszavonása</li>
+<li><span class="num">4.</span>Meghívólinkek és attribúció</li>
 </ol>
-<p>A Szolgáltatás a felhasználó hozzájárulása alapján reklámcélra reklámazonosítókat (pl. IDFA) szerez. Ha vissza szeretnéd vonni a reklámhoz adott hozzájárulásodat, az alábbi módon teheted meg.</p>
-<ul class="bullet">
-<li>Az alkalmazás törlése: Az alkalmazás eltávolítása leállítja a reklámcélú információgyűjtést.</li>
-<li>Fizetős verzió használata: A fizetős verzióra való frissítés leállítja a hirdetéseket és a reklámcélú információgyűjtést.</li>
-</ul>
-<p>Helyadatok az időjáráshoz</p>
-<p>Ha az időjárás be van kapcsolva, az alkalmazás használata közben az előrejelzés frissítésekor lekérjük az aktuális helyzetét, és szerverünkön (Firebase) keresztül elküldjük az Apple Weather részére. Az eszköz az utolsó helyzetet és legfeljebb három óráig az előrejelzés gyorsítótárát tárolja; ezek az időjárás kikapcsolásakor vagy kijelentkezéskor törlődnek. Nem tárolunk helyelőzményeket, nem mentjük tartósan a helyadatokat a szerveren, nem küldjük el elemzési szolgáltatásoknak, és nem követjük a helyzetét a háttérben.</p>
+<p>A megosztott naptárakhoz tartozó meghívólinkek létrehozásához, a meghívókkal kapcsolatos információk továbbításához és a felhasználószerzési csatornák méréséhez a Társaság a Firebase Cloud Functions és az AppsFlyer szolgáltatást használja. Meghívólink létrehozásakor a Társaság olyan adatokat küld az AppsFlyernek, mint a meghívó fél megjelenített neve, a naptár neve, a naptárazonosító és a meghívótoken. A felhasználószerzési adatok alkalmazásfelhasználókhoz rendeléséhez a Társaság a bejelentkezett felhasználó azonosítóját is elküldi az AppsFlyernek. A beállításoktól függően ez a feldolgozás készülékinformációkat, azonosítókat, IP-címeket, valamint a telepítésekre és a linkek használatára vonatkozó információkat is érinthet.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Emlékeztetők és push-értesítések</li>
+</ol>
+<p>Az eseményemlékeztetők, a megosztott naptárak frissítéseiről szóló értesítések és a teendőértesítések biztosításához a Társaság a készülékeden található eseményinformációkat, az értesítési beállításokat és az értesítési tokeneket használja. Az értesítések küldése a Firebase Cloud Messaging (FCM) vagy az Apple Push Notification service (APNs) útján történik. A megosztott értesítések tartalmazhatják az események címét, dátumát és időpontját, a naptárak nevét, a megjelenített neveket és a teendők neveit.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Használat, hibák, teljesítmény, konfiguráció továbbítása és visszaélések megelőzése</li>
+</ol>
+<p>A szolgáltatás használatának elemzéséhez, a hibák kivizsgálásához, a teljesítmény méréséhez, az alkalmazás konfigurációjának továbbításához és a visszaélések megelőzéséhez a Társaság a Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config és App Check szolgáltatásokat használja. Az alkalmazásindításoktól, a funkciók használatától, a beállításoktól, a hozzájárulástól és a készülék környezetétől függően a Társaság olyan információkat küld az egyes szolgáltatásoknak, mint a felhasználói azonosítók, interakciós események, az alkalmazásra és a készülékre vonatkozó információk, hibák, teljesítményadatok, valamint az alkalmazás sértetlenségének ellenőrzéséhez szükséges információk.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Reklámok</li>
+</ol>
+<p>A Társaság a Google AdMob szolgáltatást használja hirdetések megjelenítésére, a hozzájárulás kezelésére és a hirdetések teljesítményének mérésére. A reklámazonosítók és hasonló információk kezelése a hozzájárulásodnak, a készülék- és alkalmazásbeállításaidnak, valamint a használati környezetnek megfelelően történik. A Google AdMob szolgáltató szabályzatai a hirdetések és a hozzájárulás kezelésére is vonatkoznak.</p>
+<p>A készüléked beállításaiban módosíthatod a reklámazonosítók használatára vonatkozó engedélyt. A fizetős verzióban nem jelennek meg hirdetések.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Helyek keresése</li>
+</ol>
+<p>A helykeresés használatakor a Társaság elküldi a beírt keresőkifejezéseket, a nyelvet és – szükség esetén – az aktuális helyzeted alapján meghatározott keresési területet a Google Places API-nak, hogy helyjavaslatokat és a helyekre vonatkozó részleteket kérjen le. A lekért információkat az események helyének megadására és megjelenítésére használja.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL-előnézetek és megkeresések</li>
+</ol>
+<p>URL-előnézetek használatakor a készüléked eléri az URL-t, hogy lekérje az előnézet megjelenítéséhez felhasznált metaadatokat, például az oldal címét, leírását és képeit. A meglátogatott weboldal irányelvei is érvényesek.</p>
+<p>Kommunikációra akkor is sor kerül, amikor a Társaság a közlemények, súgótartalom, profilképek és hasonló tartalmak megjelenítéséhez szükséges információkat ezek forrásaiból szerzi be; a források kommunikációs információkat, például az IP-címedet kapják meg.</p>
+<p>Ha megkeresést küldesz, a Társaság a válaszadáshoz és a problémák kivizsgálásához a Firebase-nek továbbítja az üzenet szövegét, a válaszhoz megadott e-mail-címet, a válaszkérésre vonatkozó beállítást, a bejelentkezett felhasználó azonosítóját, az alkalmazás- és készülékinformációkat, a nyelvi beállításokat, a Pro-státuszt, a diagnosztikai információkat, a csatolt képeket és hasonló információkat. A továbbított adatok köre a megadott információktól és a használati környezettől függ.</p>
 <h3>9. cikk: AI és automatizálás</h3>
 <p>A Társaság AI-technológiát használ a Szolgáltatás fejlesztéséhez, de nem használja fel a felhasználók személyes adatait más AI-modellek betanítására. A Társaság gondoskodik az AI-feldolgozással kapcsolatos átláthatóságról is.</p>
 <h3>10. cikk: Adatok törlése</h3>

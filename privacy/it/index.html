@@ -109,32 +109,49 @@
 <h2>Trattamento specifico del servizio</h2>
 <h3>Articolo 8: Trattamento specifico del servizio</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Informazioni del calendario e degli eventi:</li>
+<li><span class="num">1.</span>Calendari, eventi, account e impostazioni</li>
 </ol>
-<p>Le informazioni raccolte vengono utilizzate solo all&#x27;interno del dispositivo per fornire le seguenti funzionalità, e sono parzialmente archiviate su server esterni gestiti dalla Società.</p>
-<ul class="bullet">
-<li>Visualizzazione e modifica del calendario</li>
-<li>Visualizzazione e modifica degli eventi</li>
-</ul>
+<p>Per visualizzare, creare, modificare, inviare notifiche e sincronizzare calendari ed eventi, la Società tratta le informazioni del calendario presenti sul tuo dispositivo e le informazioni di Google Calendar ottenute e aggiornate tramite Google Calendar API. Se colleghi un calendario esterno come Google, tali informazioni vengono gestite anche in conformità con l&#x27;informativa sulla privacy di ciascun fornitore del servizio.</p>
+<p>La Società utilizza Firebase Authentication e Firestore per autenticare gli account, sincronizzare il tuo profilo e le impostazioni dell&#x27;app, fornire funzionalità di calendario condiviso e salvare modelli di eventi. In base alle funzionalità che utilizzi, la Società memorizza le impostazioni del profilo, le informazioni sul dispositivo, le informazioni relative alla condivisione e i titoli, i luoghi, le note e le impostazioni di ripetizione e notifica dei modelli di eventi.</p>
+<p>Per fornire le funzionalità di integrazione e condivisione, la Società gestisce Firebase e vi conserva le credenziali di autenticazione necessarie per l&#x27;integrazione con Google (token di accesso e di aggiornamento). La Società non ottiene né conserva la password del tuo account Google.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Quando un utente collega il proprio calendario con servizi cloud esterni (iCloud, Google Calendar, Outlook, ecc.), tali informazioni vengono gestite in conformità con l&#x27;informativa sulla privacy di ciascun fornitore di servizi.</li>
-<li><span class="num">3.</span>Trattamento delle informazioni dell&#x27;account Gmail</li>
+<li><span class="num">2.</span>Creazione di eventi con AI, analisi delle immagini e suggerimenti di colore</li>
 </ol>
-<p>La Società accede solo alle informazioni minime necessarie (nell&#x27;ambito richiesto per la funzione di condivisione del calendario) tramite l&#x27;autenticazione OAuth di Google. La Società non ottiene né archivia le password degli utenti. Le informazioni raccolte vengono utilizzate esclusivamente per fornire la funzione di condivisione e non vengono fornite a terzi.</p>
+<p>Per creare e analizzare eventi con l&#x27;AI, la Società utilizza i testi e le immagini che inserisci o fornisci per convertirli in proposte di eventi.</p>
+<p>Per l&#x27;inserimento vocale, il riconoscimento vocale del tuo dispositivo converte la voce in testo. Per creare e analizzare eventi, il testo convertito può essere inviato ad Apple Private Cloud Compute oppure a Google Gemini tramite Firebase Cloud Functions. Il modo in cui viene elaborato il riconoscimento vocale dipende dalle funzionalità e dalle impostazioni del tuo dispositivo e sistema operativo.</p>
+<p>Anche i testi che inserisci direttamente e le immagini che fornisci per creare eventi vengono elaborati da Apple Private Cloud Compute o da Google Gemini tramite Firebase Cloud Functions. Il servizio di elaborazione utilizzato dipende da fattori quali la compatibilità del dispositivo; i testi semplici possono essere elaborati sul dispositivo.</p>
+<p>I suggerimenti di colore per gli eventi vengono normalmente elaborati sul dispositivo se il dispositivo e la versione del sistema operativo sono compatibili. Le funzionalità disponibili e i metodi di elaborazione variano in base al dispositivo, al sistema operativo e alle impostazioni.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Dati relativi alle notifiche</li>
+<li><span class="num">3.</span>Acquisti e diritti di accesso alle funzionalità a pagamento</li>
 </ol>
-<p>Le informazioni sugli eventi del dispositivo e le impostazioni delle notifiche vengono utilizzate per fornire promemoria di eventi e notifiche push. Le informazioni utilizzate per le notifiche vengono utilizzate esclusivamente per fornire le funzionalità del Servizio e non vengono fornite a terzi. Possono essere utilizzati servizi di notifica esterni (ad esempio Firebase Cloud Messaging, APNs) per l&#x27;invio di notifiche, ma non vengono inclusi contenuti identificabili personalmente e l&#x27;elaborazione viene effettuata in modo sicuro.</p>
+<p>Per verificare e ripristinare gli acquisti e gestire i diritti di accesso alle funzionalità a pagamento, la Società utilizza RevenueCat e invia informazioni quali gli identificativi utente e le informazioni sugli acquisti.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Revoca del consenso alla pubblicità</li>
+<li><span class="num">4.</span>Link di invito e attribuzione</li>
 </ol>
-<p>Il Servizio ottiene identificatori pubblicitari (come IDFA) a scopi pubblicitari sulla base del consenso dell&#x27;utente. Se desideri revocare il consenso alla pubblicità, utilizza i seguenti metodi.</p>
-<ul class="bullet">
-<li>Disinstallazione dell&#x27;app: l&#x27;eliminazione dell&#x27;app dal dispositivo interromperà la raccolta di informazioni a scopi pubblicitari.</li>
-<li>Utilizzo della versione a pagamento: il passaggio alla versione a pagamento interromperà la pubblicità e la raccolta di informazioni a scopi pubblicitari.</li>
-</ul>
-<p>Posizione per il meteo</p>
-<p>Quando il meteo è attivo, rileviamo la posizione aggiornando le previsioni durante l’uso dell’app e la inviamo ad Apple Weather tramite il nostro server (Firebase). Il dispositivo conserva l’ultima posizione e le previsioni in cache per un massimo di tre ore; questi dati vengono eliminati disattivando il meteo o uscendo dall’account. Non conserviamo una cronologia delle posizioni, non le memorizziamo permanentemente sul server, non le inviamo a servizi di analisi e non rileviamo la posizione in background.</p>
+<p>Per creare link di invito per i calendari condivisi, trasferire le informazioni di invito e misurare i canali di acquisizione, la Società utilizza Firebase Cloud Functions e AppsFlyer. Quando viene generato un link di invito, la Società invia ad AppsFlyer informazioni quali il nome visualizzato di chi invita, il nome del calendario, l&#x27;ID del calendario e un token di invito. Per associare l&#x27;acquisizione agli utenti dell&#x27;app, la Società invia anche ad AppsFlyer l&#x27;identificativo dell&#x27;utente che ha effettuato l&#x27;accesso. In base alle impostazioni, il trattamento può inoltre comportare informazioni sul dispositivo, identificativi, indirizzi IP e informazioni sulle installazioni e sull&#x27;utilizzo dei link.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Promemoria e notifiche push</li>
+</ol>
+<p>Per fornire promemoria degli eventi, notifiche sugli aggiornamenti dei calendari condivisi e notifiche delle attività, la Società usa le informazioni degli eventi sul dispositivo, le impostazioni di notifica e i token di notifica. Le notifiche vengono inviate tramite Firebase Cloud Messaging (FCM) o Apple Push Notification service (APNs). Le notifiche condivise possono includere i titoli degli eventi, le date e gli orari, i nomi dei calendari, i nomi visualizzati e i nomi delle attività.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Utilizzo, errori, prestazioni, distribuzione della configurazione e prevenzione degli abusi</li>
+</ol>
+<p>Per analizzare l&#x27;utilizzo del servizio, esaminare gli errori, misurare le prestazioni, distribuire la configurazione dell&#x27;app e prevenire gli abusi, la Società utilizza Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config e App Check. A seconda degli avvii dell&#x27;app e dell&#x27;utilizzo delle funzionalità, delle impostazioni, del consenso e dell&#x27;ambiente del dispositivo, la Società invia a ciascun servizio informazioni quali gli identificativi utente, gli eventi di interazione, le informazioni sull&#x27;app e sul dispositivo, gli errori, le informazioni sulle prestazioni e le informazioni necessarie per verificare l&#x27;integrità dell&#x27;app.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Pubblicità</li>
+</ol>
+<p>Per mostrare annunci, gestire il consenso e misurare il rendimento degli annunci, la Società utilizza Google AdMob. Gli identificativi pubblicitari e le informazioni simili vengono trattati in base al tuo consenso, alle impostazioni del dispositivo e dell&#x27;app e all&#x27;ambiente di utilizzo. La gestione della pubblicità e del consenso è anch&#x27;essa soggetta alle policy del fornitore del servizio Google AdMob.</p>
+<p>Puoi modificare nelle impostazioni del tuo dispositivo l&#x27;autorizzazione all&#x27;uso degli identificativi pubblicitari. La versione a pagamento interrompe la visualizzazione degli annunci.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Ricerca di luoghi</li>
+</ol>
+<p>Quando utilizzi la ricerca di luoghi, la Società invia a Google Places API i termini di ricerca che inserisci, la lingua e, se necessario, un&#x27;area di ricerca basata sulla tua posizione attuale, per ottenere suggerimenti e dettagli sui luoghi. Le informazioni ottenute vengono utilizzate per inserire e visualizzare i luoghi degli eventi.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Anteprime degli URL e richieste di informazioni</li>
+</ol>
+<p>Quando utilizzi le anteprime degli URL, il tuo dispositivo accede all&#x27;URL per ottenere metadati come il titolo, la descrizione e le immagini della pagina e mostrarne l&#x27;anteprima. Si applicano anche le politiche del sito web visitato.</p>
+<p>Si verifica inoltre una comunicazione quando la Società recupera dalle fonti le informazioni necessarie per mostrare avvisi, contenuti di supporto, immagini del profilo e contenuti simili; tali fonti ricevono informazioni di comunicazione come il tuo indirizzo IP.</p>
+<p>Quando invii una richiesta, per risponderti e indagare eventuali problemi, la Società invia a Firebase il contenuto del messaggio, l&#x27;indirizzo email per la risposta, le tue preferenze di risposta, l&#x27;identificativo dell&#x27;utente che ha effettuato l&#x27;accesso, informazioni sull&#x27;app e sul dispositivo, le impostazioni della lingua, lo stato Pro, informazioni diagnostiche, immagini allegate e informazioni simili. Gli elementi inviati variano in base a quanto inserisci e all&#x27;ambiente di utilizzo.</p>
 <h3>Articolo 9: AI e automazione</h3>
 <p>La Società utilizza la tecnologia AI per migliorare il Servizio, ma non utilizza i dati personali degli utenti per addestrare altri modelli AI. La Società garantisce anche trasparenza riguardo all&#x27;elaborazione AI.</p>
 <h3>Articolo 10: Eliminazione dei dati</h3>

@@ -107,28 +107,49 @@
 <h2>Specifieke behandeling binnen de service</h2>
 <h3>Artikel 8: Specifieke behandeling binnen de service</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Agenda- en afspraakgegevens:</li>
+<li><span class="num">1.</span>Agenda&#x27;s, afspraken, accounts en instellingen</li>
 </ol>
-<p>De verzamelde informatie wordt alleen binnen het apparaat gebruikt om de volgende functies te bieden, en wordt gedeeltelijk opgeslagen op externe servers die door het Bedrijf worden beheerd.</p>
-<p>• Weergave en bewerking van de agenda</p>
-<p>• Weergave en bewerking van afspraken</p>
+<p>Om agenda&#x27;s en afspraken weer te geven, aan te maken, te bewerken, meldingen te versturen en te synchroniseren, verwerkt het Bedrijf agenda-informatie op je apparaat en Google Calendar-informatie die via Google Calendar API wordt verkregen en bijgewerkt. Als je een externe agenda koppelt, zoals Google, wordt die informatie ook beheerd volgens het privacybeleid van de betreffende dienstverlener.</p>
+<p>Het Bedrijf gebruikt Firebase Authentication en Firestore voor accountverificatie, het synchroniseren van je profiel en app-instellingen, functies voor gedeelde agenda&#x27;s en het opslaan van sjablonen voor afspraken. Afhankelijk van de functies die je gebruikt, bewaart het Bedrijf profielinstellingen, apparaatinformatie, informatie over delen en titels, locaties, notities en herhalings- en meldingsinstellingen van sjablonen voor afspraken.</p>
+<p>Om integratie- en deelfuncties te bieden, bewaart het Bedrijf de voor de Google-integratie benodigde authenticatiegegevens (toegangs- en vernieuwingstokens) in Firebase, dat het Bedrijf beheert. Het Bedrijf verkrijgt of bewaart je Google-accountwachtwoord niet.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Wanneer een gebruiker zijn agenda koppelt aan externe cloudservices (iCloud, Google Calendar, Outlook enz.), wordt dergelijke informatie beheerd volgens het privacybeleid van de betreffende dienstverlener.</li>
-<li><span class="num">3.</span>Behandeling van Gmail-accountgegevens</li>
+<li><span class="num">2.</span>Afspraken aanmaken met AI, beeldanalyse en kleursuggesties</li>
 </ol>
-<p>Het Bedrijf krijgt alleen toegang tot de minimaal benodigde informatie (binnen het bereik dat nodig is voor de agendadelingsfunctie) via Google&#x27;s OAuth-authenticatie. Het Bedrijf verkrijgt of bewaart geen wachtwoorden van gebruikers. De verzamelde informatie wordt uitsluitend gebruikt voor de delingsfunctie en wordt niet aan derden verstrekt.</p>
+<p>Om met AI afspraken aan te maken en te analyseren, gebruikt het Bedrijf de tekst en afbeeldingen die je invoert of aanlevert om daar mogelijke afspraken van te maken.</p>
+<p>Bij spraakinvoer zet de spraakherkenning op je apparaat spraak om in tekst. Om afspraken aan te maken en te analyseren, kan de omgezette tekst naar Apple Private Cloud Compute of via Firebase Cloud Functions naar Google Gemini worden gestuurd. Hoe spraakherkenning wordt verwerkt, hangt af van de functies en instellingen van je apparaat en besturingssysteem.</p>
+<p>Tekst die je rechtstreeks invoert en afbeeldingen die je aanlevert om afspraken aan te maken, worden ook verwerkt door Apple Private Cloud Compute of via Firebase Cloud Functions door Google Gemini. Welke verwerkingsdienst wordt gebruikt, hangt af van factoren zoals ondersteuning door je apparaat; eenvoudige tekst kan op je apparaat worden verwerkt.</p>
+<p>Suggesties voor afspraakkleuren worden doorgaans op je apparaat verwerkt als je apparaat en versie van het besturingssysteem worden ondersteund. Beschikbare functies en verwerkingsmethoden verschillen per apparaat, besturingssysteem en instellingen.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Gegevens met betrekking tot meldingen</li>
+<li><span class="num">3.</span>Aankopen van betaalde functies en toegangsrechten</li>
 </ol>
-<p>Informatie over apparaatgebeurtenissen en meldingsinstellingen wordt gebruikt om afspraakherinneringen en pushmeldingen te leveren. Informatie die voor meldingen wordt gebruikt, wordt uitsluitend gebruikt om de functies van de Service te leveren en wordt niet aan derden verstrekt. Externe meldingsdiensten (bijv. Firebase Cloud Messaging, APNs) kunnen worden gebruikt om meldingen te verzenden, maar persoonlijk identificeerbare inhoud wordt niet opgenomen en de verwerking gebeurt op een veilige manier.</p>
+<p>Om aankopen te verifiëren en te herstellen en toegangsrechten voor betaalde functies te beheren, gebruikt het Bedrijf RevenueCat en stuurt het informatie zoals gebruikersidentificatoren en aankoopinformatie.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Intrekking van toestemming voor reclame</li>
+<li><span class="num">4.</span>Uitnodigingslinks en attributie</li>
 </ol>
-<p>De Service verkrijgt reclame-identificatoren (zoals IDFA) voor reclamedoeleinden op basis van toestemming van de gebruiker. Als je toestemming voor reclame wilt intrekken, gebruik dan de volgende methoden.</p>
-<p>• De app verwijderen: het verwijderen van de app van het apparaat stopt het verzamelen van informatie voor reclamedoeleinden.</p>
-<p>• De betaalde versie gebruiken: overschakelen naar de betaalde versie stopt advertenties en het verzamelen van informatie voor reclamedoeleinden.</p>
-<p>Locatie voor het weer</p>
-<p>Als het weer is ingeschakeld, halen we je huidige locatie op bij het bijwerken van voorspellingen tijdens het gebruik van de app en sturen we deze via onze server (Firebase) naar Apple Weather. Het apparaat bewaart de laatst opgehaalde locatie en voorspellingen maximaal drie uur in de cache; deze gegevens worden verwijderd als je het weer uitschakelt of uitlogt. We bewaren geen locatiegeschiedenis, slaan locaties niet permanent op onze server op, sturen ze niet naar analysediensten en volgen je locatie niet op de achtergrond.</p>
+<p>Om uitnodigingslinks voor gedeelde agenda&#x27;s aan te maken, uitnodigingsinformatie door te geven en acquisitiekanalen te meten, gebruikt het Bedrijf Firebase Cloud Functions en AppsFlyer. Bij het genereren van een uitnodigingslink stuurt het Bedrijf informatie zoals de weergavenaam van degene die uitnodigt, de agendanaam, de agenda-ID en een uitnodigingstoken naar AppsFlyer. Om acquisitie aan appgebruikers te koppelen, stuurt het Bedrijf ook de identificator van de ingelogde gebruiker naar AppsFlyer. Afhankelijk van de instellingen kan deze verwerking ook apparaatinformatie, identificatoren, IP-adressen en informatie over installaties en linkgebruik omvatten.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Herinneringen en pushmeldingen</li>
+</ol>
+<p>Om herinneringen voor afspraken, meldingen over updates van gedeelde agenda&#x27;s en meldingen over taken te bieden, gebruikt het Bedrijf afspraakgegevens op je apparaat, meldingsinstellingen en meldingstokens. Meldingen worden verzonden via Firebase Cloud Messaging (FCM) of Apple Push Notification service (APNs). Gedeelde meldingen kunnen titels van afspraken, datums en tijden, agendanamen, weergavenamen en taaknamen bevatten.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Gebruik, fouten, prestaties, configuratielevering en misbruikpreventie</li>
+</ol>
+<p>Om servicegebruik te analyseren, fouten te onderzoeken, prestaties te meten, appconfiguratie te leveren en misbruik te voorkomen, gebruikt het Bedrijf Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config en App Check. Afhankelijk van appstarts en functiegebruik, instellingen, toestemming en de apparaatcontext stuurt het Bedrijf informatie zoals gebruikersidentificatoren, interactiegebeurtenissen, app- en apparaatinformatie, fouten, prestatiegegevens en informatie die nodig is om de integriteit van de app te controleren naar elke dienst.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Advertenties</li>
+</ol>
+<p>Het Bedrijf gebruikt Google AdMob om advertenties weer te geven, toestemming te beheren en advertentieprestaties te meten. Advertentie-identificatoren en vergelijkbare informatie worden verwerkt volgens je toestemming, apparaatinstellingen, app-instellingen en gebruiksomgeving. Ook het beheer van advertenties en toestemming valt onder het beleid van Google AdMob als dienstverlener.</p>
+<p>Je kunt in de instellingen van je apparaat de toestemming voor het gebruik van advertentie-identificatoren wijzigen. De betaalde versie toont geen advertenties meer.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Locaties zoeken</li>
+</ol>
+<p>Wanneer je locaties zoekt, stuurt het Bedrijf je ingevoerde zoektermen, de taal en, indien nodig, een zoekgebied op basis van je huidige locatie naar Google Places API om suggesties voor plaatsen en details daarvan op te halen. De opgehaalde informatie wordt gebruikt om locaties voor afspraken in te voeren en weer te geven.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL-voorvertoningen en contactverzoeken</li>
+</ol>
+<p>Wanneer je een URL-voorvertoning gebruikt, opent je apparaat de URL om metadata zoals de paginatitel, beschrijving en afbeeldingen op te halen en de voorvertoning weer te geven. Ook het beleid van de bezochte website is van toepassing.</p>
+<p>Er vindt ook communicatie plaats wanneer het Bedrijf bij de bronnen informatie ophaalt die nodig is om aankondigingen, helpinhoud, profielfoto&#x27;s en vergelijkbare inhoud weer te geven. Die bronnen ontvangen communicatiegegevens zoals je IP-adres.</p>
+<p>Wanneer je een contactverzoek indient, stuurt het Bedrijf de berichttekst, het e-mailadres voor het antwoord, je antwoordvoorkeur, de identificator van de ingelogde gebruiker, app- en apparaatinformatie, taalinstellingen, Pro-status, diagnostische informatie, bijgevoegde afbeeldingen en vergelijkbare informatie naar Firebase om te kunnen antwoorden en problemen te onderzoeken. Welke gegevens worden verstuurd, hangt af van wat je opgeeft en van je gebruiksomgeving.</p>
 <h3>Artikel 9: AI en automatisering</h3>
 <p>Het Bedrijf gebruikt AI-technologie om de Service te verbeteren, maar gebruikt geen persoonsgegevens van gebruikers om andere AI-modellen te trainen. Het Bedrijf zorgt ook voor transparantie met betrekking tot AI-verwerking.</p>
 <h3>Artikel 10: Verwijdering van gegevens</h3>

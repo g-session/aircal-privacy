@@ -107,28 +107,49 @@
 <h2>Tratamento específico do Serviço</h2>
 <h3>Artigo 8. Tratamento específico do Serviço</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Calendário e informações de eventos:</li>
+<li><span class="num">1.</span>Calendários, eventos, contas e configurações</li>
 </ol>
-<p>As informações obtidas são utilizadas apenas no dispositivo para oferecer as seguintes funcionalidades, e parte delas é armazenada em servidores externos administrados pela Empresa.</p>
-<p>• Visualização e edição do calendário.</p>
-<p>• Visualização e edição dos eventos.</p>
+<p>Para exibir, criar, editar, enviar notificações e sincronizar calendários e eventos, a Empresa trata as informações de calendário do seu dispositivo e as informações do Google Agenda obtidas e atualizadas pela Google Calendar API. Se você conectar um calendário externo, como o Google, essas informações também serão tratadas de acordo com a política de privacidade de cada provedor de serviço.</p>
+<p>A Empresa utiliza Firebase Authentication e Firestore para autenticar contas, sincronizar seu perfil e as configurações do app, oferecer recursos de calendário compartilhado e salvar modelos de eventos. Conforme os recursos que você utiliza, a Empresa armazena configurações do perfil, informações do dispositivo, informações relacionadas ao compartilhamento e títulos, locais, anotações e configurações de repetição e notificações dos modelos de eventos.</p>
+<p>Para oferecer recursos de integração e compartilhamento, a Empresa armazena no Firebase (administrado pela própria Empresa) as credenciais de autenticação necessárias à integração com o Google (tokens de acesso e de atualização). A Empresa não obtém nem armazena a senha da sua conta do Google.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Se o Usuário tiver seu calendário sincronizado com serviços externos em nuvem (iCloud, Google Agenda, Outlook etc.), tais informações serão tratadas conforme a política de privacidade de cada provedor.</li>
-<li><span class="num">3.</span>Tratamento das informações da conta do Gmail</li>
+<li><span class="num">2.</span>Criação de eventos com IA, análise de imagens e sugestões de cores</li>
 </ol>
-<p>A Empresa acessa apenas as informações mínimas necessárias por meio da autenticação OAuth do Google (na medida necessária à função de compartilhamento de calendários). A Empresa não obtém nem armazena as senhas dos Usuários. As informações obtidas serão utilizadas exclusivamente para prestar a função de compartilhamento e não serão entregues a terceiros.</p>
+<p>Para criar e analisar eventos com IA, a Empresa usa os textos e as imagens que você insere ou fornece para convertê-los em sugestões de eventos.</p>
+<p>Na entrada por voz, o reconhecimento de fala do dispositivo converte a fala em texto. Para criar e analisar eventos, o texto convertido pode ser enviado para Apple Private Cloud Compute ou para Google Gemini por meio do Firebase Cloud Functions. A forma de processamento do reconhecimento de fala depende dos recursos e das configurações do dispositivo e do sistema operacional.</p>
+<p>Os textos que você insere diretamente e as imagens que fornece para criar eventos também são processados por Apple Private Cloud Compute ou por Google Gemini por meio do Firebase Cloud Functions. O serviço de processamento utilizado depende de fatores como a compatibilidade do dispositivo, e textos simples podem ser processados no próprio dispositivo.</p>
+<p>As sugestões de cores dos eventos são normalmente processadas no dispositivo em aparelhos e versões do sistema operacional compatíveis. Os recursos disponíveis e os métodos de processamento variam de acordo com o dispositivo, o sistema operacional e as configurações.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Dados relativos às notificações</li>
+<li><span class="num">3.</span>Compras de recursos pagos e direitos de acesso</li>
 </ol>
-<p>Para enviar lembretes de eventos e notificações push, são utilizadas as informações de eventos e as configurações de notificação do dispositivo. As informações usadas para as notificações são empregadas apenas para prestar as funcionalidades do Serviço e não são cedidas a terceiros. Para enviar as notificações podem ser utilizados serviços externos de notificação (por exemplo, Firebase Cloud Messaging ou APNs), mas não incluirão dados que permitam identificar uma pessoa e serão tratados de forma segura.</p>
+<p>Para verificar e restaurar compras e gerenciar os direitos de acesso aos recursos pagos, a Empresa utiliza RevenueCat e envia informações como identificadores de usuários e informações de compra.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Como retirar o consentimento publicitário</li>
+<li><span class="num">4.</span>Links de convite e atribuição</li>
 </ol>
-<p>O Serviço obtém um identificador publicitário (como o IDFA) com o consentimento do Usuário para exibir anúncios. Se desejar retirar seu consentimento publicitário, você pode fazê-lo das seguintes formas:</p>
-<p>• Desinstalar o app: se você o remover do dispositivo, a coleta de informações para fins publicitários será interrompida.</p>
-<p>• Usar a versão paga: ao atualizar para a versão paga, os anúncios são desativados e a coleta de informações para fins publicitários é interrompida.</p>
-<p>Localização para o tempo</p>
-<p>Com o tempo ativado, obtemos sua localização ao atualizar a previsão durante o uso do app e a enviamos ao Apple Weather pelo nosso servidor (Firebase). O dispositivo armazena a última localização e previsões em cache por até três horas; esses dados são excluídos ao desativar o tempo ou sair da conta. Não mantemos histórico de localização, não armazenamos posições permanentemente no servidor, não as enviamos para análise nem rastreamos a localização em segundo plano.</p>
+<p>Para criar links de convite para calendários compartilhados, encaminhar informações dos convites e medir os canais de aquisição, a Empresa utiliza Firebase Cloud Functions e AppsFlyer. Quando um link de convite é gerado, a Empresa envia à AppsFlyer informações como o nome de exibição de quem convida, o nome do calendário, o ID do calendário e um token de convite. Para associar a origem da aquisição aos usuários do app, a Empresa também envia à AppsFlyer o identificador do usuário que fez login. Dependendo das configurações, esse processamento também pode envolver informações do dispositivo, identificadores, endereços IP e informações sobre instalações e uso de links.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Lembretes e notificações push</li>
+</ol>
+<p>Para fornecer lembretes de eventos, notificações de atualizações de calendários compartilhados e notificações de tarefas, a Empresa usa as informações dos eventos no dispositivo, as configurações de notificação e os tokens de notificação. As notificações são enviadas pelo Firebase Cloud Messaging (FCM) ou pelo Apple Push Notification service (APNs). As notificações compartilhadas podem incluir títulos de eventos, datas e horários, nomes de calendários, nomes de exibição e nomes de tarefas.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Uso, erros, desempenho, entrega de configurações e prevenção de abusos</li>
+</ol>
+<p>Para analisar o uso do Serviço, investigar erros, medir o desempenho, fornecer as configurações do app e prevenir abusos, a Empresa utiliza Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config e App Check. Dependendo das inicializações do app, do uso dos recursos, das configurações, do consentimento e do ambiente do dispositivo, a Empresa envia a cada serviço informações como identificadores de usuário, eventos de interação, informações do app e do dispositivo, erros, informações de desempenho e informações necessárias para verificar a integridade do app.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Publicidade</li>
+</ol>
+<p>Para exibir anúncios, gerenciar o consentimento e medir o desempenho dos anúncios, a Empresa utiliza Google AdMob. Identificadores de publicidade e informações semelhantes são tratados de acordo com seu consentimento, as configurações do dispositivo e do app e o ambiente de uso. O gerenciamento de anúncios e do consentimento também está sujeito às políticas do provedor do serviço Google AdMob.</p>
+<p>Você pode alterar nas configurações do dispositivo a permissão de uso de identificadores de publicidade. A versão paga interrompe a exibição de anúncios.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Pesquisa de locais</li>
+</ol>
+<p>Ao usar a pesquisa de locais, a Empresa envia para a Google Places API os termos de pesquisa que você informa, o idioma e, quando necessário, uma área de pesquisa baseada na sua localização atual, para obter sugestões e detalhes de locais. As informações obtidas são usadas para inserir e exibir os locais dos eventos.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Pré-visualizações de URL e consultas</li>
+</ol>
+<p>Ao usar as pré-visualizações de URL, seu dispositivo acessa a URL para obter metadados, como o título, a descrição e as imagens da página, a fim de exibir a pré-visualização. A política do site acessado também se aplica.</p>
+<p>Também há comunicação quando a Empresa obtém das respectivas fontes as informações necessárias para exibir avisos, conteúdo de ajuda, imagens de perfil e conteúdo semelhante; essas fontes recebem informações de conexão, como seu endereço IP.</p>
+<p>Ao enviar uma consulta, para responder e investigar problemas, a Empresa envia para o Firebase o conteúdo da mensagem, o endereço de e-mail para resposta, sua preferência de resposta, o identificador do usuário que fez login, informações do app e do dispositivo, configurações de idioma, status Pro, informações de diagnóstico, imagens anexadas e outras informações semelhantes. Os itens enviados variam conforme o conteúdo informado e o ambiente de uso.</p>
 <h3>Artigo 9. IA e automação</h3>
 <p>A Empresa utiliza tecnologia de IA para melhorar o Serviço, mas não usa os dados pessoais dos Usuários para treinar outros modelos de IA. Além disso, garante a transparência sobre o conteúdo do processamento por IA.</p>
 <h3>Artigo 10. Exclusão de dados</h3>

@@ -107,28 +107,49 @@
 <h2>Dienstspezifischer Umgang</h2>
 <h3>Artikel 8: Dienstspezifischer Umgang</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Kalender- und Termininformationen:</li>
+<li><span class="num">1.</span>Kalender, Termine, Konten und Einstellungen</li>
 </ol>
-<p>Die erhobenen Informationen werden ausschließlich auf dem Gerät verwendet, um die folgenden Funktionen bereitzustellen, und teilweise auf vom Unternehmen verwalteten externen Servern gespeichert.</p>
-<p>• Anzeige und Bearbeitung des Kalenders</p>
-<p>• Anzeige und Bearbeitung von Terminen</p>
+<p>Das Unternehmen verarbeitet Kalenderinformationen auf deinem Gerät und über Google Calendar API abgerufene und aktualisierte Google-Kalenderinformationen, um Kalender und Termine anzuzeigen, zu erstellen und zu bearbeiten, Benachrichtigungen zu senden und Kalender und Termine zu synchronisieren. Wenn du einen externen Kalender wie Google verknüpfst, werden diese Informationen auch gemäß der Datenschutzerklärung des jeweiligen Anbieters verwaltet.</p>
+<p>Das Unternehmen verwendet Firebase Authentication und Firestore zur Kontoauthentifizierung, zum Synchronisieren deines Profils und deiner App-Einstellungen, für gemeinsame Kalenderfunktionen und zum Speichern von Terminvorlagen. Je nachdem, welche Funktionen du verwendest, speichert das Unternehmen Profileinstellungen, Geräteinformationen, Informationen im Zusammenhang mit dem Teilen sowie Titel, Orte, Notizen und Wiederholungs- und Benachrichtigungseinstellungen der Terminvorlagen.</p>
+<p>Um Integrations- und Freigabefunktionen bereitzustellen, speichert das Unternehmen die für die Google-Integration erforderlichen Anmeldedaten (Zugriffs- und Aktualisierungstoken) in Firebase, das vom Unternehmen verwaltet wird. Das Unternehmen erhält oder speichert das Passwort deines Google-Kontos nicht.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Wenn ein Nutzer seinen Kalender mit externen Cloud-Diensten (iCloud, Google Kalender, Outlook usw.) verknüpft, werden diese Informationen gemäß der Datenschutzerklärung des jeweiligen Anbieters verwaltet.</li>
-<li><span class="num">3.</span>Umgang mit Gmail-Kontoinformationen</li>
+<li><span class="num">2.</span>KI-gestützte Terminerstellung, Bildanalyse und Farbempfehlungen</li>
 </ol>
-<p>Das Unternehmen greift über die OAuth-Authentifizierung von Google nur auf die mindestens erforderlichen Informationen zu (im Umfang, der für die Funktion zum Teilen des Kalenders erforderlich ist). Das Unternehmen erhält oder speichert die Passwörter der Nutzer nicht. Die erhobenen Informationen werden ausschließlich zur Bereitstellung der Teilen-Funktion verwendet und nicht an Dritte weitergegeben.</p>
+<p>Zur Erstellung und Analyse von Terminen mit KI verwendet das Unternehmen die Texte und Bilder, die du eingibst oder bereitstellst, um sie in Terminvorschläge umzuwandeln.</p>
+<p>Bei der Spracheingabe wandelt die Spracherkennung deines Geräts Sprache in Text um. Zur Erstellung und Analyse von Terminen kann der umgewandelte Text an Apple Private Cloud Compute oder über Firebase Cloud Functions an Google Gemini gesendet werden. Wie die Spracherkennung verarbeitet wird, hängt von den Funktionen und Einstellungen deines Geräts und Betriebssystems ab.</p>
+<p>Direkt eingegebene Texte und Bilder, die du für die Terminerstellung bereitstellst, werden ebenfalls von Apple Private Cloud Compute oder über Firebase Cloud Functions von Google Gemini verarbeitet. Welcher Verarbeitungsdienst verwendet wird, hängt von Faktoren wie der Geräteunterstützung ab; einfache Texte können auf dem Gerät verarbeitet werden.</p>
+<p>Farbempfehlungen für Termine werden auf unterstützten Geräten und Betriebssystemversionen normalerweise auf dem Gerät verarbeitet. Verfügbare Funktionen und Verarbeitungsmethoden unterscheiden sich je nach Gerät, Betriebssystem und Einstellungen.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Benachrichtigungsbezogene Daten</li>
+<li><span class="num">3.</span>Käufe kostenpflichtiger Funktionen und Nutzungsberechtigungen</li>
 </ol>
-<p>Geräte-Termininformationen und Benachrichtigungseinstellungen werden zur Bereitstellung von Erinnerungs- und Push-Benachrichtigungen verwendet. Die für Benachrichtigungen verwendeten Informationen dienen ausschließlich der Bereitstellung der Funktionen des Dienstes und werden nicht an Dritte weitergegeben. Für den Versand von Benachrichtigungen können externe Benachrichtigungsdienste (z. B. Firebase Cloud Messaging, APNs) verwendet werden, wobei keine personenbezogen identifizierbaren Inhalte enthalten sind und die Verarbeitung sicher erfolgt.</p>
+<p>Zur Überprüfung und Wiederherstellung von Käufen sowie zur Verwaltung der Nutzungsberechtigungen für kostenpflichtige Funktionen verwendet das Unternehmen RevenueCat und übermittelt Informationen wie Nutzerkennungen und Kaufdaten.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Widerruf der Einwilligung in Werbung</li>
+<li><span class="num">4.</span>Einladungslinks und Attribution</li>
 </ol>
-<p>Der Dienst erhebt zu Werbezwecken auf Basis der Einwilligung der Nutzer Werbe-Identifier (etwa IDFA). Wenn du deine Einwilligung in Werbung widerrufen möchtest, nutze bitte folgende Methoden.</p>
-<p>• Deinstallation der App: Beim Löschen der App vom Gerät wird die Erhebung von Informationen zu Werbezwecken eingestellt.</p>
-<p>• Nutzung der kostenpflichtigen Version: Beim Upgrade auf die kostenpflichtige Version werden Werbung und die Erhebung von Informationen zu Werbezwecken eingestellt.</p>
-<p>Standort für das Wetter</p>
-<p>Bei aktiviertem Wetter ermitteln wir deinen Standort beim Aktualisieren der Vorhersage während der App-Nutzung und senden ihn über unseren Server (Firebase) an Apple Weather. Das Gerät speichert den zuletzt ermittelten Standort und Vorhersagen für höchstens drei Stunden. Beim Ausschalten des Wetters oder Abmelden werden diese Daten gelöscht. Wir speichern keinen Standortverlauf, speichern Standorte nicht dauerhaft auf unserem Server, senden sie nicht an Analysedienste und verfolgen den Standort nicht im Hintergrund.</p>
+<p>Zur Erstellung von Einladungslinks für gemeinsame Kalender, zur Weitergabe von Einladungsinformationen und zur Messung von Akquisekanälen verwendet das Unternehmen Firebase Cloud Functions und AppsFlyer. Wenn ein Einladungslink erstellt wird, übermittelt das Unternehmen Informationen wie den Anzeigenamen der einladenden Person, den Kalendernamen, die Kalender-ID und ein Einladungstoken an AppsFlyer. Um die Herkunft der Nutzergewinnung mit App-Nutzern zu verknüpfen, übermittelt das Unternehmen auch die Kennung des angemeldeten Nutzers an AppsFlyer. Je nach Einstellungen kann diese Verarbeitung auch Geräteinformationen, Kennungen, IP-Adressen und Informationen zu Installationen und zur Linknutzung umfassen.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Erinnerungen und Push-Benachrichtigungen</li>
+</ol>
+<p>Um Erinnerungen an Termine, Benachrichtigungen zu Aktualisierungen gemeinsamer Kalender und Aufgabenbenachrichtigungen bereitzustellen, verwendet das Unternehmen Termininformationen auf deinem Gerät sowie Benachrichtigungseinstellungen und Benachrichtigungstoken. Benachrichtigungen werden über Firebase Cloud Messaging (FCM) oder Apple Push Notification service (APNs) versendet. Gemeinsame Benachrichtigungen können Termintitel, Datum und Uhrzeit, Kalendernamen, Anzeigenamen und Aufgabennamen enthalten.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Nutzung, Fehler, Leistung, Bereitstellung von Konfigurationen und Missbrauchsprävention</li>
+</ol>
+<p>Zur Analyse der Dienstnutzung, Untersuchung von Fehlern, Messung der Leistung, Bereitstellung der App-Konfiguration und Verhinderung von Missbrauch verwendet das Unternehmen Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config und App Check. Abhängig von App-Starts, der Funktionsnutzung, den Einstellungen, der Einwilligung und der Geräteumgebung übermittelt das Unternehmen an die jeweiligen Dienste Informationen wie Nutzerkennungen, Interaktionsereignisse, App- und Geräteinformationen, Fehler, Leistungsdaten und Informationen, die zur Überprüfung der App-Integrität erforderlich sind.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Werbung</li>
+</ol>
+<p>Zur Anzeige von Werbung, Verwaltung der Einwilligung und Messung der Werbeleistung verwendet das Unternehmen Google AdMob. Werbe-IDs und ähnliche Informationen werden entsprechend deiner Einwilligung, den Geräte- und App-Einstellungen und der Nutzungsumgebung verarbeitet. Die Verwaltung von Werbung und Einwilligungen unterliegt ebenfalls den Richtlinien des Dienstanbieters Google AdMob.</p>
+<p>In den Geräteeinstellungen kannst du die Berechtigung zur Verwendung von Werbe-IDs ändern. In der kostenpflichtigen Version wird keine Werbung mehr angezeigt.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Ortssuche</li>
+</ol>
+<p>Bei der Nutzung der Ortssuche übermittelt das Unternehmen die von dir eingegebenen Suchbegriffe, die Sprache und bei Bedarf einen auf deinem aktuellen Standort beruhenden Suchbereich an Google Places API, um Ortsvorschläge und Details abzurufen. Die abgerufenen Informationen werden zur Eingabe und Anzeige von Terminorten verwendet.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL-Vorschauen und Anfragen</li>
+</ol>
+<p>Wenn du URL-Vorschauen nutzt, ruft dein Gerät die URL auf, um Metadaten wie Seitentitel, Beschreibung und Bilder abzurufen und die Vorschau anzuzeigen. Es gelten auch die Richtlinien der aufgerufenen Website.</p>
+<p>Auch beim Abrufen von Informationen aus den jeweiligen Quellen, die für die Anzeige von Mitteilungen, Hilfeinhalten, Profilbildern und ähnlichen Inhalten erforderlich sind, findet eine Kommunikation statt. Diese Quellen erhalten Kommunikationsinformationen wie deine IP-Adresse.</p>
+<p>Wenn du eine Anfrage sendest, übermittelt das Unternehmen zur Beantwortung und Untersuchung von Problemen den Nachrichtentext, die E-Mail-Adresse für die Antwort, deine Antwortpräferenz, die Kennung des angemeldeten Nutzers, App- und Geräteinformationen, Spracheinstellungen, den Pro-Status, Diagnoseinformationen, angehängte Bilder und ähnliche Informationen an Firebase. Welche Angaben übermittelt werden, hängt von deinen Eingaben und der Nutzungsumgebung ab.</p>
 <h3>Artikel 9: KI und Automatisierung</h3>
 <p>Das Unternehmen nutzt KI-Technologie zur Verbesserung des Dienstes, verwendet personenbezogene Daten der Nutzer jedoch nicht zum Training anderer KI-Modelle. Das Unternehmen sorgt zudem für Transparenz hinsichtlich der KI-Verarbeitung.</p>
 <h3>Artikel 10: Datenlöschung</h3>

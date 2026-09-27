@@ -109,32 +109,49 @@
 <h2>Penanganan Khusus Layanan</h2>
 <h3>Pasal 8: Penanganan Khusus Layanan</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Informasi kalender dan acara:</li>
+<li><span class="num">1.</span>Kalender, acara, akun, dan pengaturan</li>
 </ol>
-<p>Informasi yang dikumpulkan hanya digunakan di dalam perangkat untuk menyediakan fitur-fitur berikut, dan sebagian disimpan di server eksternal yang dikelola Perusahaan.</p>
-<ul class="bullet">
-<li>Tampilan dan pengeditan kalender</li>
-<li>Tampilan dan pengeditan acara</li>
-</ul>
+<p>Untuk menampilkan, membuat, mengedit, mengirim notifikasi, dan menyinkronkan kalender dan acara, Perusahaan menangani informasi kalender di perangkatmu serta informasi Google Kalender yang diperoleh dan diperbarui melalui Google Calendar API. Jika kamu menghubungkan kalender eksternal seperti Google, informasi tersebut juga dikelola sesuai dengan kebijakan privasi masing-masing penyedia layanan.</p>
+<p>Perusahaan menggunakan Firebase Authentication dan Firestore untuk autentikasi akun, menyinkronkan profilmu dan pengaturan aplikasi, menyediakan fitur kalender bersama, serta menyimpan templat acara. Bergantung pada fitur yang kamu gunakan, Perusahaan menyimpan pengaturan profil, informasi perangkat, informasi terkait berbagi, serta judul, lokasi, catatan, dan pengaturan pengulangan dan notifikasi templat acara.</p>
+<p>Untuk menyediakan fitur integrasi dan berbagi, Perusahaan menyimpan kredensial autentikasi yang diperlukan untuk integrasi Google (token akses dan token pembaruan) di Firebase yang dikelola oleh Perusahaan. Perusahaan tidak memperoleh atau menyimpan kata sandi akun Google-mu.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Saat pengguna menghubungkan kalendernya dengan layanan cloud eksternal (iCloud, Google Kalender, Outlook, dll.), informasi tersebut dikelola sesuai dengan kebijakan privasi masing-masing penyedia layanan.</li>
-<li><span class="num">3.</span>Penanganan informasi akun Gmail</li>
+<li><span class="num">2.</span>Pembuatan acara dengan AI, analisis gambar, dan saran warna</li>
 </ol>
-<p>Perusahaan mengakses hanya informasi minimum yang diperlukan (dalam cakupan yang dibutuhkan untuk fitur berbagi kalender) melalui autentikasi OAuth Google. Perusahaan tidak memperoleh atau menyimpan kata sandi pengguna. Informasi yang dikumpulkan hanya digunakan untuk menyediakan fitur berbagi dan tidak diberikan kepada pihak ketiga.</p>
+<p>Untuk membuat dan menganalisis acara dengan AI, Perusahaan menggunakan teks dan gambar yang kamu masukkan atau berikan untuk mengubahnya menjadi usulan acara.</p>
+<p>Pada input suara, fitur pengenalan suara di perangkatmu mengubah ucapan menjadi teks. Untuk membuat dan menganalisis acara, teks hasil konversi dapat dikirim ke Apple Private Cloud Compute atau ke Google Gemini melalui Firebase Cloud Functions. Cara pemrosesan pengenalan suara bergantung pada fitur dan pengaturan perangkat dan sistem operasi.</p>
+<p>Teks yang kamu masukkan langsung dan gambar yang kamu berikan untuk membuat acara juga diproses oleh Apple Private Cloud Compute atau oleh Google Gemini melalui Firebase Cloud Functions. Layanan pemrosesan yang digunakan bergantung pada faktor seperti dukungan perangkat, dan teks sederhana mungkin diproses di perangkatmu.</p>
+<p>Saran warna acara biasanya diproses di perangkat pada perangkat dan versi sistem operasi yang didukung. Fitur yang tersedia dan metode pemrosesan bervariasi menurut perangkat, sistem operasi, dan pengaturan.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Data terkait notifikasi</li>
+<li><span class="num">3.</span>Pembelian fitur berbayar dan hak akses</li>
 </ol>
-<p>Informasi acara perangkat dan pengaturan notifikasi digunakan untuk menyediakan pengingat acara dan notifikasi push. Informasi yang digunakan untuk notifikasi hanya digunakan untuk menyediakan fitur Layanan dan tidak diberikan kepada pihak ketiga. Layanan notifikasi eksternal (mis. Firebase Cloud Messaging, APNs) dapat digunakan untuk mengirim notifikasi, tetapi tidak ada konten yang dapat mengidentifikasi pribadi yang disertakan dan pemrosesan dilakukan secara aman.</p>
+<p>Untuk memverifikasi dan memulihkan pembelian serta mengelola hak akses ke fitur berbayar, Perusahaan menggunakan RevenueCat dan mengirimkan informasi seperti ID pengguna dan informasi pembelian.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Penarikan persetujuan iklan</li>
+<li><span class="num">4.</span>Tautan undangan dan atribusi</li>
 </ol>
-<p>Layanan memperoleh pengenal iklan (seperti IDFA) untuk tujuan iklan berdasarkan persetujuan pengguna. Jika kamu ingin menarik persetujuan iklanmu, mohon gunakan metode berikut.</p>
-<ul class="bullet">
-<li>Hapus aplikasi: Menghapus aplikasi dari perangkat akan menghentikan pengumpulan informasi untuk tujuan iklan.</li>
-<li>Gunakan versi berbayar: Dengan meningkatkan ke versi berbayar, iklan akan dihentikan dan informasi tidak lagi dikumpulkan untuk tujuan iklan.</li>
-</ul>
-<p>Lokasi untuk cuaca</p>
-<p>Saat cuaca aktif, kami mengambil lokasi saat memperbarui prakiraan selama Anda menggunakan aplikasi, lalu mengirimkannya ke Apple Weather melalui server kami (Firebase). Perangkat menyimpan lokasi terakhir dan cache prakiraan hingga tiga jam; data ini dihapus saat cuaca dinonaktifkan atau Anda keluar. Kami tidak menyimpan riwayat lokasi, menyimpan lokasi secara permanen di server, mengirimkannya ke layanan analitik, atau melacak lokasi di latar belakang.</p>
+<p>Untuk membuat tautan undangan kalender bersama, meneruskan informasi undangan, dan mengukur saluran akuisisi, Perusahaan menggunakan Firebase Cloud Functions dan AppsFlyer. Saat tautan undangan dibuat, Perusahaan mengirimkan informasi seperti nama tampilan pengundang, nama kalender, ID kalender, dan token undangan kepada AppsFlyer. Untuk mengaitkan sumber akuisisi dengan pengguna aplikasi, Perusahaan juga mengirimkan ID pengguna yang telah masuk kepada AppsFlyer. Bergantung pada pengaturan, pemrosesan ini juga dapat melibatkan informasi perangkat, pengenal, alamat IP, serta informasi tentang instalasi dan penggunaan tautan.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Pengingat dan notifikasi push</li>
+</ol>
+<p>Untuk menyediakan pengingat acara, notifikasi pembaruan kalender bersama, dan notifikasi tugas, Perusahaan menggunakan informasi acara di perangkat, pengaturan notifikasi, dan token notifikasi. Notifikasi dikirim melalui Firebase Cloud Messaging (FCM) atau Apple Push Notification service (APNs). Notifikasi bersama dapat mencakup judul acara, tanggal dan waktu, nama kalender, nama tampilan, dan nama tugas.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Penggunaan, kesalahan, kinerja, penyediaan konfigurasi, dan pencegahan penyalahgunaan</li>
+</ol>
+<p>Untuk menganalisis penggunaan layanan, menyelidiki kesalahan, mengukur kinerja, menyediakan konfigurasi aplikasi, dan mencegah penyalahgunaan, Perusahaan menggunakan Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config, dan App Check. Bergantung pada pembukaan aplikasi dan penggunaan fitur, pengaturan, persetujuan, serta lingkungan perangkat, Perusahaan mengirimkan informasi seperti pengenal pengguna, peristiwa interaksi, informasi aplikasi dan perangkat, kesalahan, informasi kinerja, serta informasi yang diperlukan untuk memverifikasi integritas aplikasi kepada setiap layanan.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Iklan</li>
+</ol>
+<p>Untuk menampilkan iklan, mengelola persetujuan, dan mengukur kinerja iklan, Perusahaan menggunakan Google AdMob. Pengenal iklan dan informasi serupa diproses sesuai dengan persetujuanmu, pengaturan perangkat dan aplikasi, serta lingkungan penggunaan. Pengelolaan iklan dan persetujuan juga tunduk pada kebijakan penyedia layanan Google AdMob.</p>
+<p>Kamu dapat mengubah izin penggunaan pengenal iklan di pengaturan perangkatmu. Versi berbayar berhenti menampilkan iklan.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Pencarian tempat</li>
+</ol>
+<p>Saat menggunakan pencarian tempat, Perusahaan mengirimkan istilah pencarian yang kamu masukkan, bahasa, dan bila diperlukan area pencarian berdasarkan lokasimu saat ini ke Google Places API untuk memperoleh saran dan detail tempat. Informasi yang diperoleh digunakan untuk memasukkan dan menampilkan lokasi acara.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Pratinjau URL dan pertanyaan</li>
+</ol>
+<p>Saat menggunakan pratinjau URL, perangkatmu mengakses URL untuk memperoleh metadata seperti judul, deskripsi, dan gambar halaman guna menampilkan pratinjau. Kebijakan situs web yang diakses juga berlaku.</p>
+<p>Komunikasi juga terjadi saat Perusahaan mengambil informasi yang diperlukan untuk menampilkan pengumuman, konten bantuan, gambar profil, dan konten serupa dari sumbernya; sumber tersebut menerima informasi komunikasi seperti alamat IP-mu.</p>
+<p>Saat mengirim pertanyaan, untuk membalas dan menyelidiki masalah, Perusahaan mengirimkan isi pesan, alamat email untuk membalas, preferensi balasan, ID pengguna yang telah masuk, informasi aplikasi dan perangkat, pengaturan bahasa, status Pro, informasi diagnostik, gambar lampiran, dan informasi serupa kepada Firebase. Item yang dikirim bervariasi tergantung pada masukan dan lingkungan penggunaanmu.</p>
 <h3>Pasal 9: AI dan Otomasi</h3>
 <p>Perusahaan menggunakan teknologi AI untuk meningkatkan Layanan, tetapi tidak menggunakan data pribadi pengguna untuk melatih model AI lainnya. Perusahaan juga memastikan transparansi terkait pemrosesan AI.</p>
 <h3>Pasal 10: Penghapusan Data</h3>

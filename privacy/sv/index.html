@@ -109,32 +109,49 @@
 <h2>Tjänstespecifik behandling</h2>
 <h3>Artikel 8: Tjänstespecifik behandling</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Kalender- och händelseinformation:</li>
+<li><span class="num">1.</span>Kalendrar, händelser, konton och inställningar</li>
 </ol>
-<p>Insamlad information används endast inom enheten för att leverera följande funktioner och lagras delvis på externa servrar som hanteras av Bolaget.</p>
-<ul class="bullet">
-<li>Visning och redigering av kalendern</li>
-<li>Visning och redigering av händelser</li>
-</ul>
+<p>För att visa, skapa, redigera, skicka aviseringar om och synkronisera kalendrar och händelser behandlar Bolaget kalenderinformation på din enhet samt Google Calendar-information som hämtas och uppdateras via Google Calendar API. Om du ansluter en extern kalender, till exempel Google, hanteras den informationen också i enlighet med respektive tjänsteleverantörs integritetspolicy.</p>
+<p>Bolaget använder Firebase Authentication och Firestore för autentisering av konton, synkronisering av din profil och appinställningar, funktioner för delade kalendrar och lagring av mallar för händelser. Beroende på vilka funktioner du använder lagrar Bolaget profilinställningar, enhetsinformation, information relaterad till delning samt titlar, platser, anteckningar och inställningar för upprepning och aviseringar i händelsemallar.</p>
+<p>För att tillhandahålla integrations- och delningsfunktioner lagrar Bolaget de autentiseringsuppgifter som krävs för Google-integrationen (åtkomsttoken och förnyelsetoken) i Firebase, som Bolaget hanterar. Bolaget hämtar eller lagrar inte lösenordet till ditt Google-konto.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>När en användare ansluter kalendern till externa molntjänster (iCloud, Google Calendar, Outlook osv.), hanteras sådan information i enlighet med integritetspolicyn för respektive tjänsteleverantör.</li>
-<li><span class="num">3.</span>Behandling av Gmail-kontoinformation</li>
+<li><span class="num">2.</span>Skapa händelser med AI, bildanalys och färgförslag</li>
 </ol>
-<p>Bolaget får endast tillgång till den minimala information som är nödvändig (inom det omfång som krävs för kalenderdelningsfunktionen) via Googles OAuth-autentisering. Bolaget inhämtar eller lagrar inte användarnas lösenord. Insamlad information används uteslutande för att leverera delningsfunktionen och lämnas inte ut till tredje part.</p>
+<p>För att skapa och analysera händelser med AI använder Bolaget den text och de bilder du anger eller tillhandahåller för att omvandla dem till förslag på händelser.</p>
+<p>Vid röstinmatning omvandlar taligenkänningen på din enhet tal till text. För att skapa och analysera händelser kan den omvandlade texten skickas till Apple Private Cloud Compute eller till Google Gemini via Firebase Cloud Functions. Hur taligenkänningen behandlas beror på funktionerna och inställningarna på din enhet och i operativsystemet.</p>
+<p>Text som du skriver in direkt och bilder som du tillhandahåller för att skapa händelser behandlas också av Apple Private Cloud Compute eller av Google Gemini via Firebase Cloud Functions. Vilken behandlingstjänst som används beror på faktorer som stöd på enheten; enkel text kan behandlas på din enhet.</p>
+<p>Färgförslag för händelser behandlas normalt på din enhet om enheten och operativsystemversionen stöds. Tillgängliga funktioner och behandlingsmetoder varierar beroende på enhet, operativsystem och inställningar.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Data knutna till aviseringar</li>
+<li><span class="num">3.</span>Köp av betalfunktioner och åtkomsträttigheter</li>
 </ol>
-<p>Information om händelser på enheten och aviseringsinställningar används för att ge påminnelser om händelser och push-aviseringar. Information som används för aviseringar används uteslutande för att leverera funktioner i Tjänsten och lämnas inte ut till tredje part. Externa aviseringstjänster (till exempel Firebase Cloud Messaging, APNs) kan användas för att skicka aviseringar, men personligt identifierbart innehåll inkluderas inte, och behandlingen utförs på ett säkert sätt.</p>
+<p>För att verifiera och återställa köp och hantera åtkomsträttigheter till betalfunktioner använder Bolaget RevenueCat och skickar information såsom användaridentifierare och köpinformation.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Återkallande av samtycke till reklam</li>
+<li><span class="num">4.</span>Inbjudningslänkar och attribution</li>
 </ol>
-<p>Tjänsten inhämtar reklamidentifierare (såsom IDFA) för reklamsyften baserat på användarens samtycke. Om du vill återkalla samtycket till reklam kan du använda följande metoder.</p>
-<ul class="bullet">
-<li>Avinstallera appen: när appen tas bort från enheten upphör insamlingen av information för reklamsyften.</li>
-<li>Använd den betalda versionen: byte till den betalda versionen stoppar reklam och insamling av information för reklamsyften.</li>
-</ul>
-<p>Plats för väder</p>
-<p>När väder är aktiverat hämtar vi din aktuella plats vid uppdatering av prognoser medan du använder appen och skickar den till Apple Weather via vår server (Firebase). Enheten sparar den senast hämtade platsen och prognoser i cache i högst tre timmar; uppgifterna raderas när du stänger av väder eller loggar ut. Vi sparar ingen platshistorik, lagrar inte platser permanent på servern, skickar dem inte till analys och spårar inte platsen i bakgrunden.</p>
+<p>För att skapa inbjudningslänkar för delade kalendrar, föra vidare inbjudningsinformation och mäta kanaler för användarförvärv använder Bolaget Firebase Cloud Functions och AppsFlyer. När en inbjudningslänk skapas skickar Bolaget information såsom inbjudarens visningsnamn, kalendernamnet, kalender-ID:t och en inbjudningstoken till AppsFlyer. För att koppla användarförvärv till appanvändare skickar Bolaget även identifieraren för den inloggade användaren till AppsFlyer. Beroende på inställningarna kan behandlingen även omfatta enhetsinformation, identifierare, IP-adresser och information om installationer och länkanvändning.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Påminnelser och push-aviseringar</li>
+</ol>
+<p>För att tillhandahålla påminnelser om händelser, aviseringar om uppdateringar av delade kalendrar och uppgiftsaviseringar använder Bolaget händelseinformation på din enhet, aviseringsinställningar och aviseringstoken. Aviseringar skickas via Firebase Cloud Messaging (FCM) eller Apple Push Notification service (APNs). Delade aviseringar kan innehålla händelserubriker, datum och tider, kalendernamn, visningsnamn och uppgiftsnamn.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Användning, fel, prestanda, leverans av konfiguration och förebyggande av missbruk</li>
+</ol>
+<p>För att analysera användningen av tjänsten, undersöka fel, mäta prestanda, leverera appkonfiguration och förebygga missbruk använder Bolaget Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config och App Check. Beroende på appstarter och funktionsanvändning, inställningar, samtycke och enhetsmiljö skickar Bolaget information såsom användaridentifierare, interaktionshändelser, app- och enhetsinformation, fel, prestandainformation och information som behövs för att verifiera appens integritet till respektive tjänst.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Annonser</li>
+</ol>
+<p>Bolaget använder Google AdMob för att visa annonser, hantera samtycke och mäta annonsresultat. Annonsidentifierare och liknande information behandlas i enlighet med ditt samtycke, enhetsinställningar, appinställningar och användningsmiljö. Hantering av annonser och samtycke omfattas också av de policyer som tjänsteleverantören Google AdMob tillämpar.</p>
+<p>Du kan ändra tillåtelsen att använda annonsidentifierare i inställningarna på din enhet. Den betalda versionen slutar visa annonser.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Platssökning</li>
+</ol>
+<p>När du använder platssökningen skickar Bolaget dina söktermer, språket och, vid behov, ett sökområde baserat på din aktuella plats till Google Places API för att hämta platsförslag och platsinformation. Den hämtade informationen används för att ange och visa händelseplatser.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL-förhandsvisningar och kontaktförfrågningar</li>
+</ol>
+<p>När du använder URL-förhandsvisningar öppnar din enhet URL:en för att hämta metadata, såsom sidtiteln, beskrivningen och bilderna, så att förhandsvisningen kan visas. Även den besökta webbplatsens policy gäller.</p>
+<p>Kommunikation sker även när Bolaget hämtar information från källorna som behövs för att visa meddelanden, hjälpinnehåll, profilbilder och liknande innehåll. Dessa källor får kommunikationsinformation, såsom din IP-adress.</p>
+<p>När du skickar en kontaktförfrågan överför Bolaget meddelandetexten, e-postadressen för svar, önskemål om svar, identifieraren för den inloggade användaren, app- och enhetsinformation, språkinställningar, Pro-status, diagnostisk information, bifogade bilder och liknande information till Firebase för att kunna svara och undersöka problem. Vilka uppgifter som skickas varierar beroende på vad du anger och din användningsmiljö.</p>
 <h3>Artikel 9: AI och automatisering</h3>
 <p>Bolaget använder AI-teknik för att förbättra Tjänsten, men använder inte användarnas personuppgifter för att träna andra AI-modeller. Bolaget säkerställer också transparens kring AI-behandling.</p>
 <h3>Artikel 10: Radering av data</h3>

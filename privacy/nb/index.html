@@ -109,32 +109,49 @@
 <h2>Tjenestespesifikk behandling</h2>
 <h3>Artikkel 8: Tjenestespesifikk behandling</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Kalender- og hendelsesinformasjon:</li>
+<li><span class="num">1.</span>Kalendere, hendelser, kontoer og innstillinger</li>
 </ol>
-<p>Innsamlet informasjon brukes kun innenfor enheten for å levere følgende funksjoner, og lagres delvis på eksterne servere administrert av Selskapet.</p>
-<ul class="bullet">
-<li>Visning og redigering av kalenderen</li>
-<li>Visning og redigering av hendelser</li>
-</ul>
+<p>For å vise, opprette, redigere, varsle om og synkronisere kalendere og hendelser behandler Selskapet kalenderinformasjon på enheten din og informasjon fra Google Calendar som innhentes og oppdateres via Google Calendar API. Hvis du kobler til en ekstern kalender, for eksempel Google, forvaltes informasjonen også i samsvar med personvernerklæringen til den aktuelle tjenesteleverandøren.</p>
+<p>Selskapet bruker Firebase Authentication og Firestore til autentisering av kontoer, synkronisering av profilen og appinnstillingene dine, funksjoner for delte kalendere og lagring av hendelsesmaler. Avhengig av hvilke funksjoner du bruker, lagrer Selskapet profilinnstillinger, enhetsinformasjon, informasjon knyttet til deling og titler, steder, notater samt innstillinger for gjentakelse og varsler for hendelsesmaler.</p>
+<p>For å tilby integrasjons- og delingsfunksjoner lagrer Selskapet autentiseringsopplysningene som er nødvendige for Google-integrasjonen (tilgangstokener og fornyelsestokener) i Firebase, som Selskapet administrerer. Selskapet innhenter eller lagrer ikke passordet til Google-kontoen din.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Når en bruker kobler kalenderen til eksterne skytjenester (iCloud, Google Kalender, Outlook osv.), administreres slik informasjon i samsvar med personvernerklæringen til den respektive tjenesteleverandøren.</li>
-<li><span class="num">3.</span>Behandling av Gmail-kontoinformasjon</li>
+<li><span class="num">2.</span>Opprettelse av hendelser med AI, bildeanalyse og fargeforslag</li>
 </ol>
-<p>Selskapet får kun tilgang til den minimumsinformasjonen som er nødvendig (innenfor det omfanget som kreves for kalenderdelingsfunksjonen) via Googles OAuth-autentisering. Selskapet innhenter eller lagrer ikke brukernes passord. Innsamlet informasjon brukes utelukkende til å levere delingsfunksjonen og utleveres ikke til tredjeparter.</p>
+<p>For å opprette og analysere hendelser med AI bruker Selskapet teksten og bildene du skriver inn eller oppgir for å gjøre dem om til forslag til hendelser.</p>
+<p>Ved taleinndata gjør talegjenkjenningen på enheten din tale om til tekst. For å opprette og analysere hendelser kan den konverterte teksten sendes til Apple Private Cloud Compute eller til Google Gemini via Firebase Cloud Functions. Hvordan talegjenkjenningen behandles, avhenger av funksjonene og innstillingene på enheten og i operativsystemet ditt.</p>
+<p>Tekst du skriver inn direkte og bilder du oppgir for å opprette hendelser, behandles også av Apple Private Cloud Compute eller av Google Gemini via Firebase Cloud Functions. Hvilken behandlingstjeneste som brukes, avhenger av faktorer som støtte på enheten; enkel tekst kan behandles på enheten din.</p>
+<p>Fargeforslag for hendelser behandles vanligvis på enheten din når enheten og versjonen av operativsystemet støttes. Tilgjengelige funksjoner og behandlingsmetoder varierer etter enhet, operativsystem og innstillinger.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Data knyttet til varsler</li>
+<li><span class="num">3.</span>Kjøp av betalte funksjoner og tilgangsrettigheter</li>
 </ol>
-<p>Informasjon om hendelser på enheten og varselinnstillinger brukes til å gi påminnelser om hendelser og push-varsler. Informasjon som brukes til varsler, brukes utelukkende til å levere funksjoner i Tjenesten og utleveres ikke til tredjeparter. Eksterne varslingstjenester (for eksempel Firebase Cloud Messaging, APNs) kan brukes til å sende varsler, men personlig identifiserbart innhold inkluderes ikke, og behandlingen utføres på en sikker måte.</p>
+<p>For å verifisere og gjenopprette kjøp og administrere tilgangsrettigheter til betalte funksjoner bruker Selskapet RevenueCat og sender informasjon som brukeridentifikatorer og kjøpsinformasjon.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Tilbaketrekking av samtykke til reklame</li>
+<li><span class="num">4.</span>Invitasjonslenker og attribusjon</li>
 </ol>
-<p>Tjenesten innhenter reklame-identifikatorer (som IDFA) til reklameformål basert på brukerens samtykke. Hvis du vil trekke tilbake samtykket til reklame, kan du bruke følgende metoder.</p>
-<ul class="bullet">
-<li>Avinstaller appen: når appen slettes fra enheten, stopper innsamlingen av informasjon til reklameformål.</li>
-<li>Bruk den betalte versjonen: bytte til den betalte versjonen stopper reklame og innsamling av informasjon til reklameformål.</li>
-</ul>
-<p>Posisjon for vær</p>
-<p>Når vær er slått på, henter vi posisjonen din ved oppdatering av værmeldingen mens du bruker appen, og sender den til Apple Weather via serveren vår (Firebase). Enheten lagrer sist hentede posisjon og værmeldinger i opptil tre timer. Dataene slettes når du slår av vær eller logger ut. Vi lagrer ikke posisjonshistorikk, lagrer ikke posisjoner permanent på serveren, sender dem ikke til analyse og sporer ikke posisjonen i bakgrunnen.</p>
+<p>For å opprette invitasjonslenker for delte kalendere, videreformidle invitasjonsinformasjon og måle kanaler for brukeranskaffelse bruker Selskapet Firebase Cloud Functions og AppsFlyer. Når en invitasjonslenke opprettes, sender Selskapet informasjon som visningsnavnet til personen som inviterer, kalendernavnet, kalender-ID-en og et invitasjonstoken til AppsFlyer. For å knytte brukeranskaffelse til appbrukere sender Selskapet også identifikatoren til den innloggede brukeren til AppsFlyer. Avhengig av innstillingene kan denne behandlingen også omfatte enhetsinformasjon, identifikatorer, IP-adresser og informasjon om installasjoner og bruk av lenker.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Påminnelser og push-varsler</li>
+</ol>
+<p>For å sende påminnelser om hendelser, varsler om oppdateringer i delte kalendere og oppgavevarsler bruker Selskapet hendelsesinformasjon på enheten din, varslingsinnstillinger og varslingstokener. Varsler sendes via Firebase Cloud Messaging (FCM) eller Apple Push Notification service (APNs). Delte varsler kan inneholde hendelsestitler, datoer og klokkeslett, kalendernavn, visningsnavn og oppgavenavn.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Bruk, feil, ytelse, levering av konfigurasjon og forebygging av misbruk</li>
+</ol>
+<p>For å analysere bruken av tjenesten, undersøke feil, måle ytelse, levere appkonfigurasjon og forebygge misbruk bruker Selskapet Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config og App Check. Avhengig av appstarter og funksjonsbruk, innstillinger, samtykke og enhetsmiljø sender Selskapet informasjon som brukeridentifikatorer, interaksjonshendelser, app- og enhetsinformasjon, feil, ytelsesinformasjon og informasjon som trengs for å kontrollere appens integritet til hver tjeneste.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Reklame</li>
+</ol>
+<p>Selskapet bruker Google AdMob til å vise annonser, administrere samtykke og måle annonseresultater. Reklameidentifikatorer og lignende informasjon behandles i henhold til samtykket ditt, enhetsinnstillingene, appinnstillingene og bruksmiljøet. Retningslinjene til tjenesteleverandøren Google AdMob gjelder også håndteringen av annonser og samtykke.</p>
+<p>Du kan endre tillatelsen til å bruke reklameidentifikatorer i enhetsinnstillingene. Den betalte versjonen viser ikke lenger annonser.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Søk etter steder</li>
+</ol>
+<p>Når du bruker stedsøket, sender Selskapet søkeordene du skriver inn, språket og, ved behov, et søkeområde basert på den aktuelle posisjonen din til Google Places API for å hente forslag til steder og opplysninger om dem. Opplysningene brukes til å angi og vise steder for hendelser.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL-forhåndsvisninger og henvendelser</li>
+</ol>
+<p>Når du bruker URL-forhåndsvisninger, åpner enheten URL-en for å hente metadata som sidetittelen, beskrivelsen og bildene, slik at forhåndsvisningen kan vises. Retningslinjene til det besøkte nettstedet gjelder også.</p>
+<p>Kommunikasjon forekommer også når Selskapet henter informasjon fra kildene som er nødvendig for å vise kunngjøringer, hjelpetekst, profilbilder og lignende innhold, og disse kildene mottar kommunikasjonsinformasjon som IP-adressen din.</p>
+<p>Når du sender en henvendelse, sender Selskapet meldingsteksten, e-postadressen for svar, innstillingen for om du ønsker svar, identifikatoren til den innloggede brukeren, app- og enhetsinformasjon, språkinnstillinger, Pro-status, diagnostisk informasjon, vedlagte bilder og lignende informasjon til Firebase for å kunne svare og undersøke problemer. Hvilke opplysninger som sendes, varierer ut fra det du oppgir og bruksmiljøet ditt.</p>
 <h3>Artikkel 9: AI og automatisering</h3>
 <p>Selskapet bruker AI-teknologi for å forbedre Tjenesten, men bruker ikke brukernes personopplysninger til å trene andre AI-modeller. Selskapet sikrer også åpenhet rundt AI-behandling.</p>
 <h3>Artikkel 10: Sletting av data</h3>

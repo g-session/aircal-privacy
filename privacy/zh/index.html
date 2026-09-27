@@ -109,32 +109,49 @@
 <h2>本服务特有的处理</h2>
 <h3>第8条　本服务特有的处理</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>日历及日程信息：</li>
+<li><span class="num">1.</span>日历、日程、账号与设置</li>
 </ol>
-<p>所取得的信息仅在设备内用于提供下列功能，部分存储于本公司管理的外部服务器。</p>
-<ul class="bullet">
-<li>日历的显示与编辑</li>
-<li>日程的显示与编辑</li>
-</ul>
+<p>为了显示、创建、编辑、发送通知及同步日历和日程，本公司会处理您设备上的日历信息，以及通过 Google Calendar API 获取和更新的 Google 日历信息。若您连接了 Google 等外部日历，相关信息也会依照各服务提供商的隐私政策进行管理。</p>
+<p>为了进行账号身份验证、同步个人资料和 App 设置、提供共享日历功能以及保存日程模板，本公司使用 Firebase Authentication 和 Firestore。根据您使用的功能，本公司会保存个人资料设置、设备信息、与共享有关的信息，以及日程模板的标题、地点、备注、重复和通知设置等。</p>
+<p>为了提供关联和共享功能，本公司会将 Google 关联所需的身份验证凭据（访问令牌和刷新令牌）存储在由本公司管理的 Firebase 中。本公司不会获取或存储您的 Google 账号密码。</p>
 <ol class="numbered">
-<li><span class="num">2.</span>用户将日历与外部云服务（iCloud、Google日历、Outlook等）关联时，相关信息将依照各服务提供者的隐私政策管理。</li>
-<li><span class="num">3.</span>关于Gmail账号信息的处理</li>
+<li><span class="num">2.</span>AI 日程创建、图像分析与颜色建议</li>
 </ol>
-<p>本公司通过Google的OAuth认证仅访问必要最小限度的信息（日历共享功能所需范围）。不会取得或保存用户的密码。取得的信息仅用于提供共享功能，不会提供给第三方。</p>
+<p>使用 AI 创建和分析日程时，本公司会使用您输入或提供的文本和图像，将其转换为日程候选。</p>
+<p>使用语音输入时，设备的语音识别功能会将语音转换为文本。为了创建和分析日程，转换后的文本可能会发送至 Apple Private Cloud Compute，或经 Firebase Cloud Functions 发送至 Google Gemini。语音识别的处理方式取决于设备和操作系统的功能及设置。</p>
+<p>您直接输入的文本和为创建日程而提供的图像，也会由 Apple Private Cloud Compute 处理，或经 Firebase Cloud Functions 由 Google Gemini 处理。实际使用哪种处理服务取决于设备是否支持等因素，简单文本可能会在设备上处理。</p>
+<p>在支持的设备和操作系统版本上，日程颜色建议通常会在设备上处理。可用功能和处理方式因设备、操作系统及设置而异。</p>
 <ol class="numbered">
-<li><span class="num">4.</span>通知相关数据</li>
+<li><span class="num">3.</span>付费功能购买与使用资格</li>
 </ol>
-<p>为提供日程提醒及推送通知，会使用设备内的日程信息及通知设置。用于通知的信息仅用于提供本服务功能，不会提供给第三方。通知发送可能使用外部通知服务（例如Firebase Cloud Messaging、APNs），但不包含可识别个人的内容，会以安全方式处理。</p>
+<p>为了验证和恢复购买并管理付费功能的使用资格，本公司会使用 RevenueCat，并向其发送用户标识符、购买信息等。</p>
 <ol class="numbered">
-<li><span class="num">5.</span>撤回广告同意的方法</li>
+<li><span class="num">4.</span>邀请链接与来源归因</li>
 </ol>
-<p>本服务基于用户同意，为广告投放取得广告标识符（如IDFA等）。如需撤回广告同意，请采取以下方式。</p>
-<ul class="bullet">
-<li>卸载App：从设备删除App后，将停止以广告投放为目的的信息取得。</li>
-<li>使用付费版：升级到付费版后，广告投放将停止，也不再收集广告用途的信息。</li>
-</ul>
-<p>天气使用的位置信息</p>
-<p>开启天气后，我们会在您使用应用更新预报时获取当前位置，并通过我们的服务器（Firebase）发送给Apple Weather。设备保存最近获取的位置及最长三小时的预报缓存，关闭天气或退出登录时会将其删除。我们不会积累位置历史、在服务器上永久保存位置、将其发送至分析服务，也不会在后台跟踪位置。</p>
+<p>为了创建共享日历的邀请链接、传递邀请信息及衡量用户来源，本公司使用 Firebase Cloud Functions 和 AppsFlyer。生成邀请链接时，会向 AppsFlyer 发送邀请者的显示名称、日历名称、日历 ID 和邀请令牌等信息。为了将用户来源与 App 用户关联，本公司也会向 AppsFlyer 发送已登录用户的标识符。根据设置，相关处理还可能涉及设备信息、标识符、IP 地址，以及安装和链接使用情况等信息。</p>
+<ol class="numbered">
+<li><span class="num">5.</span>提醒与推送通知</li>
+</ol>
+<p>为了提供日程提醒、共享日历更新通知和待办事项通知，本公司会使用设备上的日程信息、通知设置和通知令牌。通知通过 Firebase Cloud Messaging (FCM) 或 Apple Push Notification service (APNs) 发送。共享通知可能包含日程标题、日期和时间、日历名称、显示名称及待办事项名称等。</p>
+<ol class="numbered">
+<li><span class="num">6.</span>使用情况、错误、性能、配置下发与滥用防范</li>
+</ol>
+<p>为了分析服务使用情况、调查错误、测量性能、下发 App 配置及防止滥用，本公司使用 Firebase Analytics、Crashlytics、Performance Monitoring、Remote Config 和 App Check。根据 App 启动和功能使用情况、设置、同意情况及设备环境，本公司会向各项服务发送用户标识符、交互事件、App 和设备信息、错误、性能信息，以及用于验证 App 完整性所需的信息等。</p>
+<ol class="numbered">
+<li><span class="num">7.</span>广告</li>
+</ol>
+<p>为了展示广告、管理同意及衡量广告效果，本公司使用 Google AdMob。广告标识符及类似信息会根据您的同意、设备设置、App 设置和使用环境进行处理。广告及同意管理也受 Google AdMob 服务提供商的政策约束。</p>
+<p>您可以在设备设置中更改使用广告标识符的权限。付费版会停止显示广告。</p>
+<ol class="numbered">
+<li><span class="num">8.</span>地点搜索</li>
+</ol>
+<p>使用地点搜索时，本公司会将您输入的搜索词、语言，以及必要时根据您当前位置确定的搜索范围发送至 Google Places API，以获取地点建议和详情。所获取的信息用于输入和显示日程地点。</p>
+<ol class="numbered">
+<li><span class="num">9.</span>URL 预览与咨询</li>
+</ol>
+<p>使用 URL 预览时，设备会访问相应 URL，以获取网页标题、描述和图像等元数据，从而显示预览。所访问网站的政策也适用。</p>
+<p>从相应来源获取显示公告、帮助内容、个人资料图片及类似内容所需的信息时，也会发生通信；相关来源会收到 IP 地址等通信信息。</p>
+<p>提交咨询时，为了回复并调查问题，本公司会将消息正文、回复邮箱地址、回复偏好设置、已登录用户的标识符、App 和设备信息、语言设置、Pro 状态、诊断信息、附件图片等发送至 Firebase。实际发送的项目会根据您提供的内容和使用环境而有所不同。</p>
 <h3>第9条　AI与自动化</h3>
 <p>本公司使用AI技术改进服务，但不会将用户的个人数据用于其他AI模型的训练。同时，对AI处理内容保持透明。</p>
 <h3>第10条　数据删除</h3>

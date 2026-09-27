@@ -109,32 +109,49 @@
 <h2>Xử lý đặc thù của dịch vụ</h2>
 <h3>Điều 8: Xử lý đặc thù của dịch vụ</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Thông tin lịch và sự kiện:</li>
+<li><span class="num">1.</span>Lịch, sự kiện, tài khoản và cài đặt</li>
 </ol>
-<p>Thông tin được thu thập chỉ được sử dụng trong thiết bị để cung cấp các tính năng sau, và một phần được lưu trữ trên các máy chủ bên ngoài do Công ty quản lý.</p>
-<ul class="bullet">
-<li>Hiển thị và chỉnh sửa lịch</li>
-<li>Hiển thị và chỉnh sửa sự kiện</li>
-</ul>
+<p>Để hiển thị, tạo, chỉnh sửa, gửi thông báo và đồng bộ lịch và sự kiện, Công ty xử lý thông tin lịch trên thiết bị của bạn và thông tin Google Calendar được lấy và cập nhật qua Google Calendar API. Nếu bạn kết nối lịch bên ngoài như Google, thông tin đó cũng được quản lý theo chính sách quyền riêng tư của từng nhà cung cấp dịch vụ.</p>
+<p>Công ty sử dụng Firebase Authentication và Firestore để xác thực tài khoản, đồng bộ hồ sơ và cài đặt ứng dụng của bạn, cung cấp tính năng lịch dùng chung và lưu mẫu sự kiện. Tùy theo tính năng bạn sử dụng, Công ty lưu cài đặt hồ sơ, thông tin thiết bị, thông tin liên quan đến việc chia sẻ, cũng như tiêu đề, địa điểm, ghi chú, cài đặt lặp lại và thông báo của mẫu sự kiện.</p>
+<p>Để cung cấp tính năng tích hợp và chia sẻ, Công ty lưu thông tin xác thực cần thiết cho việc tích hợp với Google (mã truy cập và mã làm mới) trong Firebase do Công ty quản lý. Công ty không lấy hoặc lưu mật khẩu tài khoản Google của bạn.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Khi người dùng kết nối lịch của mình với các dịch vụ đám mây bên ngoài (iCloud, Google Calendar, Outlook, v.v.), những thông tin đó được quản lý theo chính sách quyền riêng tư của từng nhà cung cấp dịch vụ.</li>
-<li><span class="num">3.</span>Xử lý thông tin tài khoản Gmail</li>
+<li><span class="num">2.</span>Tạo sự kiện bằng AI, phân tích hình ảnh và gợi ý màu sắc</li>
 </ol>
-<p>Công ty chỉ truy cập vào thông tin tối thiểu cần thiết (trong phạm vi cần cho tính năng chia sẻ lịch) qua xác thực OAuth của Google. Công ty không có được hoặc lưu trữ mật khẩu của người dùng. Thông tin được thu thập chỉ được dùng để cung cấp tính năng chia sẻ và không được cung cấp cho bên thứ ba.</p>
+<p>Để tạo và phân tích sự kiện bằng AI, Công ty sử dụng văn bản và hình ảnh bạn nhập hoặc cung cấp để chuyển thành đề xuất sự kiện.</p>
+<p>Khi nhập bằng giọng nói, tính năng nhận dạng giọng nói trên thiết bị của bạn chuyển lời nói thành văn bản. Để tạo và phân tích sự kiện, văn bản đã chuyển đổi có thể được gửi đến Apple Private Cloud Compute hoặc Google Gemini thông qua Firebase Cloud Functions. Cách xử lý nhận dạng giọng nói phụ thuộc vào các tính năng và cài đặt của thiết bị và hệ điều hành.</p>
+<p>Văn bản bạn nhập trực tiếp và hình ảnh bạn cung cấp để tạo sự kiện cũng được xử lý bởi Apple Private Cloud Compute hoặc Google Gemini thông qua Firebase Cloud Functions. Dịch vụ xử lý được sử dụng phụ thuộc vào các yếu tố như khả năng hỗ trợ của thiết bị; văn bản đơn giản có thể được xử lý trên thiết bị.</p>
+<p>Gợi ý màu sắc cho sự kiện thường được xử lý trên thiết bị nếu thiết bị và phiên bản hệ điều hành được hỗ trợ. Tính năng có sẵn và phương thức xử lý thay đổi tùy theo thiết bị, hệ điều hành và cài đặt.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Dữ liệu liên quan đến thông báo</li>
+<li><span class="num">3.</span>Mua tính năng trả phí và quyền sử dụng</li>
 </ol>
-<p>Thông tin về các sự kiện trên thiết bị và cài đặt thông báo được dùng để cung cấp lời nhắc sự kiện và thông báo đẩy. Thông tin dùng cho thông báo được sử dụng riêng để cung cấp các tính năng của Dịch vụ và không được cung cấp cho bên thứ ba. Có thể sử dụng các dịch vụ thông báo bên ngoài (ví dụ Firebase Cloud Messaging, APNs) để gửi thông báo, nhưng không bao gồm nội dung có thể nhận dạng cá nhân và việc xử lý được thực hiện một cách an toàn.</p>
+<p>Để xác minh và khôi phục giao dịch mua, đồng thời quản lý quyền sử dụng tính năng trả phí, Công ty sử dụng RevenueCat và gửi các thông tin như mã định danh người dùng và thông tin mua hàng.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Rút lại sự đồng ý đối với quảng cáo</li>
+<li><span class="num">4.</span>Liên kết mời và phân bổ nguồn truy cập</li>
 </ol>
-<p>Dịch vụ thu được các định danh quảng cáo (như IDFA) cho mục đích quảng cáo dựa trên sự đồng ý của người dùng. Nếu bạn muốn rút lại sự đồng ý đối với quảng cáo, vui lòng sử dụng các phương thức sau.</p>
-<ul class="bullet">
-<li>Gỡ cài đặt ứng dụng: việc xóa ứng dụng khỏi thiết bị sẽ ngừng thu thập thông tin cho mục đích quảng cáo.</li>
-<li>Sử dụng phiên bản trả phí: chuyển sang phiên bản trả phí sẽ ngừng quảng cáo và thu thập thông tin cho mục đích quảng cáo.</li>
-</ul>
-<p>Vị trí dùng cho thời tiết</p>
-<p>Khi bật thời tiết, chúng tôi lấy vị trí hiện tại lúc cập nhật dự báo trong khi bạn dùng ứng dụng và gửi đến Apple Weather qua máy chủ của chúng tôi (Firebase). Thiết bị lưu vị trí gần nhất và bộ nhớ đệm dự báo tối đa ba giờ; dữ liệu này bị xóa khi tắt thời tiết hoặc đăng xuất. Chúng tôi không lưu lịch sử vị trí, lưu vị trí lâu dài trên máy chủ, gửi vị trí cho dịch vụ phân tích hay theo dõi vị trí trong nền.</p>
+<p>Để tạo liên kết mời cho lịch dùng chung, chuyển tiếp thông tin lời mời và đo lường các kênh thu hút người dùng, Công ty sử dụng Firebase Cloud Functions và AppsFlyer. Khi tạo liên kết mời, Công ty gửi cho AppsFlyer các thông tin như tên hiển thị của người mời, tên lịch, ID lịch và mã mời. Để liên kết nguồn thu hút người dùng với người dùng ứng dụng, Công ty cũng gửi mã định danh của người dùng đã đăng nhập cho AppsFlyer. Tùy theo cài đặt, quá trình này cũng có thể liên quan đến thông tin thiết bị, mã định danh, địa chỉ IP và thông tin về lượt cài đặt và việc sử dụng liên kết.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Nhắc nhở và thông báo đẩy</li>
+</ol>
+<p>Để cung cấp lời nhắc sự kiện, thông báo cập nhật lịch dùng chung và thông báo việc cần làm, Công ty sử dụng thông tin sự kiện trên thiết bị, cài đặt thông báo và mã thông báo. Thông báo được gửi qua Firebase Cloud Messaging (FCM) hoặc Apple Push Notification service (APNs). Thông báo dùng chung có thể bao gồm tiêu đề sự kiện, ngày và giờ, tên lịch, tên hiển thị và tên việc cần làm.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Sử dụng, lỗi, hiệu suất, phân phối cấu hình và ngăn chặn lạm dụng</li>
+</ol>
+<p>Để phân tích việc sử dụng dịch vụ, điều tra lỗi, đo lường hiệu suất, phân phối cấu hình ứng dụng và ngăn chặn lạm dụng, Công ty sử dụng Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config và App Check. Tùy theo lượt khởi chạy ứng dụng và việc sử dụng tính năng, cài đặt, sự đồng ý và môi trường thiết bị, Công ty gửi cho từng dịch vụ các thông tin như mã định danh người dùng, sự kiện tương tác, thông tin ứng dụng và thiết bị, lỗi, thông tin hiệu suất và thông tin cần thiết để xác minh tính toàn vẹn của ứng dụng.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Quảng cáo</li>
+</ol>
+<p>Để hiển thị quảng cáo, quản lý sự đồng ý và đo lường hiệu quả quảng cáo, Công ty sử dụng Google AdMob. Mã định danh quảng cáo và thông tin tương tự được xử lý tùy theo sự đồng ý của bạn, cài đặt thiết bị, cài đặt ứng dụng và môi trường sử dụng. Việc quản lý quảng cáo và sự đồng ý cũng tuân theo chính sách của nhà cung cấp dịch vụ Google AdMob.</p>
+<p>Bạn có thể thay đổi quyền sử dụng mã định danh quảng cáo trong cài đặt thiết bị. Phiên bản trả phí sẽ ngừng hiển thị quảng cáo.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Tìm kiếm địa điểm</li>
+</ol>
+<p>Khi sử dụng tính năng tìm kiếm địa điểm, Công ty gửi các từ khóa tìm kiếm bạn nhập, ngôn ngữ và, khi cần, khu vực tìm kiếm dựa trên vị trí hiện tại của bạn đến Google Places API để lấy gợi ý và thông tin chi tiết về địa điểm. Thông tin nhận được được sử dụng để nhập và hiển thị địa điểm của sự kiện.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Xem trước URL và yêu cầu</li>
+</ol>
+<p>Khi sử dụng tính năng xem trước URL, thiết bị của bạn truy cập URL để lấy siêu dữ liệu như tiêu đề, mô tả và hình ảnh của trang nhằm hiển thị bản xem trước. Chính sách của trang web được truy cập cũng được áp dụng.</p>
+<p>Cũng có hoạt động liên lạc khi Công ty lấy thông tin cần thiết từ các nguồn tương ứng để hiển thị thông báo, nội dung trợ giúp, ảnh hồ sơ và nội dung tương tự; các nguồn đó nhận thông tin kết nối như địa chỉ IP của bạn.</p>
+<p>Khi gửi yêu cầu, để trả lời và điều tra vấn đề, Công ty gửi nội dung tin nhắn, địa chỉ email để phản hồi, tùy chọn phản hồi, mã định danh người dùng đã đăng nhập, thông tin ứng dụng và thiết bị, cài đặt ngôn ngữ, trạng thái Pro, thông tin chẩn đoán, hình ảnh đính kèm và thông tin tương tự đến Firebase. Các mục được gửi tùy thuộc vào nội dung bạn cung cấp và môi trường sử dụng.</p>
 <h3>Điều 9: AI và tự động hóa</h3>
 <p>Công ty sử dụng công nghệ AI để cải tiến Dịch vụ, nhưng không sử dụng dữ liệu cá nhân của người dùng để huấn luyện các mô hình AI khác. Công ty cũng đảm bảo minh bạch về việc xử lý AI.</p>
 <h3>Điều 10: Xóa dữ liệu</h3>

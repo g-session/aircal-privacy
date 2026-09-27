@@ -109,32 +109,49 @@
 <h2>Szczególne postępowanie w ramach usługi</h2>
 <h3>Artykuł 8: Szczególne postępowanie w ramach usługi</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Informacje kalendarzowe i o wydarzeniach:</li>
+<li><span class="num">1.</span>Kalendarze, wydarzenia, konta i ustawienia</li>
 </ol>
-<p>Zebrane informacje są wykorzystywane wyłącznie w obrębie urządzenia w celu świadczenia poniższych funkcji i częściowo przechowywane na serwerach zewnętrznych zarządzanych przez Firmę.</p>
-<ul class="bullet">
-<li>Wyświetlanie i edytowanie kalendarza</li>
-<li>Wyświetlanie i edytowanie wydarzeń</li>
-</ul>
+<p>Aby wyświetlać, tworzyć, edytować i synchronizować kalendarze oraz wydarzenia, a także wysyłać powiadomienia, Firma przetwarza informacje kalendarzowe na twoim urządzeniu oraz informacje z Google Calendar pobrane i aktualizowane za pośrednictwem Google Calendar API. Jeśli połączysz zewnętrzny kalendarz, taki jak Google, te informacje są również zarządzane zgodnie z polityką prywatności danego dostawcy usług.</p>
+<p>Firma korzysta z Firebase Authentication i Firestore w celu uwierzytelniania kont, synchronizowania twojego profilu i ustawień aplikacji, zapewniania funkcji kalendarza udostępnionego oraz zapisywania szablonów wydarzeń. W zależności od używanych przez ciebie funkcji Firma przechowuje ustawienia profilu, informacje o urządzeniu, informacje związane z udostępnianiem oraz tytuły, miejsca, notatki, ustawienia powtarzania i powiadomień szablonów wydarzeń.</p>
+<p>Aby zapewniać funkcje integracji i udostępniania, Firma przechowuje dane uwierzytelniające niezbędne do integracji z Google (tokeny dostępu i odświeżania) w usłudze Firebase zarządzanej przez Firmę. Firma nie uzyskuje ani nie przechowuje hasła do twojego konta Google.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Gdy użytkownik łączy swój kalendarz z zewnętrznymi usługami w chmurze (iCloud, Google Calendar, Outlook itp.), takie informacje są zarządzane zgodnie z polityką prywatności danego dostawcy usług.</li>
-<li><span class="num">3.</span>Postępowanie z informacjami konta Gmail</li>
+<li><span class="num">2.</span>Tworzenie wydarzeń z użyciem AI, analiza obrazów i sugestie kolorów</li>
 </ol>
-<p>Firma uzyskuje dostęp wyłącznie do minimum niezbędnych informacji (w zakresie wymaganym do funkcji udostępniania kalendarza) za pośrednictwem uwierzytelniania OAuth Google. Firma nie pozyskuje ani nie przechowuje haseł użytkowników. Zebrane informacje są wykorzystywane wyłącznie w celu świadczenia funkcji udostępniania i nie są przekazywane osobom trzecim.</p>
+<p>Aby tworzyć i analizować wydarzenia z użyciem AI, Firma wykorzystuje wpisywane lub przekazywane przez ciebie teksty i obrazy do przekształcania ich w propozycje wydarzeń.</p>
+<p>Podczas wprowadzania głosowego funkcja rozpoznawania mowy na twoim urządzeniu przekształca mowę na tekst. W celu tworzenia i analizowania wydarzeń przekonwertowany tekst może zostać wysłany do Apple Private Cloud Compute lub do Google Gemini za pośrednictwem Firebase Cloud Functions. Sposób przetwarzania rozpoznawania mowy zależy od funkcji i ustawień twojego urządzenia oraz systemu operacyjnego.</p>
+<p>Teksty wpisywane bezpośrednio przez ciebie i obrazy przekazywane w celu utworzenia wydarzeń są również przetwarzane przez Apple Private Cloud Compute lub przez Google Gemini za pośrednictwem Firebase Cloud Functions. Wykorzystywana usługa przetwarzania zależy od takich czynników jak obsługa przez urządzenie; proste teksty mogą być przetwarzane na urządzeniu.</p>
+<p>Sugestie kolorów wydarzeń są zazwyczaj przetwarzane na urządzeniu, jeśli urządzenie i wersja systemu operacyjnego są obsługiwane. Dostępne funkcje i metody przetwarzania różnią się w zależności od urządzenia, systemu operacyjnego i ustawień.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Dane związane z powiadomieniami</li>
+<li><span class="num">3.</span>Zakupy funkcji płatnych i uprawnienia dostępu</li>
 </ol>
-<p>Informacje o wydarzeniach urządzenia i ustawieniach powiadomień są wykorzystywane do dostarczania przypomnień o wydarzeniach i powiadomień push. Informacje wykorzystywane do powiadomień są używane wyłącznie do świadczenia funkcji Usługi i nie są przekazywane osobom trzecim. Do wysyłania powiadomień mogą być wykorzystywane zewnętrzne usługi powiadomień (np. Firebase Cloud Messaging, APNs), ale nie zawierają one treści identyfikowalnych osobowo, a przetwarzanie odbywa się w sposób bezpieczny.</p>
+<p>Aby weryfikować i przywracać zakupy oraz zarządzać uprawnieniami dostępu do funkcji płatnych, Firma korzysta z RevenueCat i wysyła informacje takie jak identyfikatory użytkowników i informacje o zakupach.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Cofnięcie zgody na reklamy</li>
+<li><span class="num">4.</span>Linki z zaproszeniami i atrybucja</li>
 </ol>
-<p>Usługa pozyskuje identyfikatory reklamowe (takie jak IDFA) w celach reklamowych na podstawie zgody użytkownika. Aby cofnąć zgodę na reklamy, skorzystaj z poniższych metod.</p>
-<ul class="bullet">
-<li>Odinstalowanie aplikacji: usunięcie aplikacji z urządzenia zakończy zbieranie informacji w celach reklamowych.</li>
-<li>Korzystanie z wersji płatnej: przejście na wersję płatną zakończy reklamy i zbieranie informacji w celach reklamowych.</li>
-</ul>
-<p>Lokalizacja dla pogody</p>
-<p>Gdy pogoda jest włączona, pobieramy bieżącą lokalizację przy aktualizacji prognozy podczas korzystania z aplikacji i wysyłamy ją do Apple Weather przez nasz serwer (Firebase). Urządzenie przechowuje ostatnią lokalizację i prognozę w pamięci podręcznej do trzech godzin; dane są usuwane po wyłączeniu pogody lub wylogowaniu. Nie zapisujemy historii lokalizacji, nie przechowujemy jej trwale na serwerze, nie wysyłamy do usług analitycznych ani nie śledzimy lokalizacji w tle.</p>
+<p>Aby tworzyć linki z zaproszeniami do kalendarzy udostępnionych, przekazywać informacje o zaproszeniach i mierzyć kanały pozyskiwania użytkowników, Firma korzysta z Firebase Cloud Functions i AppsFlyer. Przy generowaniu linku z zaproszeniem Firma wysyła do AppsFlyer informacje takie jak wyświetlana nazwa osoby zapraszającej, nazwa kalendarza, identyfikator kalendarza i token zaproszenia. Aby powiązać źródło pozyskania z użytkownikami aplikacji, Firma wysyła również do AppsFlyer identyfikator zalogowanego użytkownika. W zależności od ustawień przetwarzanie może również obejmować informacje o urządzeniu, identyfikatory, adresy IP oraz informacje o instalacjach i korzystaniu z linków.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Przypomnienia i powiadomienia push</li>
+</ol>
+<p>Aby zapewniać przypomnienia o wydarzeniach, powiadomienia o aktualizacjach udostępnionych kalendarzy i powiadomienia o zadaniach, Firma korzysta z informacji o wydarzeniach na urządzeniu, ustawień powiadomień i tokenów powiadomień. Powiadomienia są wysyłane za pośrednictwem Firebase Cloud Messaging (FCM) lub Apple Push Notification service (APNs). Udostępnione powiadomienia mogą zawierać tytuły wydarzeń, daty i godziny, nazwy kalendarzy, wyświetlane nazwy i nazwy zadań.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Użytkowanie, błędy, wydajność, dostarczanie konfiguracji i zapobieganie nadużyciom</li>
+</ol>
+<p>W celu analizowania korzystania z usługi, badania błędów, mierzenia wydajności, dostarczania konfiguracji aplikacji i zapobiegania nadużyciom Firma korzysta z Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config i App Check. W zależności od uruchomień aplikacji i korzystania z funkcji, ustawień, zgody i środowiska urządzenia Firma przesyła do poszczególnych usług informacje takie jak identyfikatory użytkowników, zdarzenia interakcji, informacje o aplikacji i urządzeniu, błędy, informacje o wydajności oraz informacje niezbędne do sprawdzenia integralności aplikacji.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Reklamy</li>
+</ol>
+<p>Aby wyświetlać reklamy, zarządzać zgodami i mierzyć skuteczność reklam, Firma korzysta z Google AdMob. Identyfikatory reklamowe i podobne informacje są przetwarzane zgodnie z twoją zgodą, ustawieniami urządzenia i aplikacji oraz środowiskiem użytkowania. Zarządzanie reklamami i zgodami również podlega zasadom dostawcy usługi Google AdMob.</p>
+<p>W ustawieniach urządzenia możesz zmienić uprawnienie do korzystania z identyfikatorów reklamowych. Wersja płatna przestaje wyświetlać reklamy.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Wyszukiwanie miejsc</li>
+</ol>
+<p>Podczas korzystania z wyszukiwania miejsc Firma wysyła do Google Places API wprowadzone przez ciebie wyszukiwane hasła, język, a w razie potrzeby także obszar wyszukiwania na podstawie twojej bieżącej lokalizacji, aby uzyskać sugestie i szczegółowe informacje o miejscach. Uzyskane informacje są wykorzystywane do wprowadzania i wyświetlania miejsc wydarzeń.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Podgląd URL i zapytania</li>
+</ol>
+<p>Podczas korzystania z podglądu URL twoje urządzenie uzyskuje dostęp do adresu URL, aby pobrać metadane, takie jak tytuł strony, opis i obrazy, i wyświetlić podgląd. Obowiązują również zasady odwiedzanej witryny.</p>
+<p>Komunikacja zachodzi również wtedy, gdy Firma pobiera ze źródeł informacje potrzebne do wyświetlania ogłoszeń, treści pomocy, zdjęć profilowych i podobnych treści; źródła te otrzymują informacje dotyczące komunikacji, takie jak twój adres IP.</p>
+<p>W przypadku wysłania zapytania Firma przesyła do Firebase, aby odpowiedzieć i zbadać problem, treść wiadomości, adres e-mail do odpowiedzi, preferencje dotyczące odpowiedzi, identyfikator zalogowanego użytkownika, informacje o aplikacji i urządzeniu, ustawienia języka, status Pro, informacje diagnostyczne, załączone obrazy oraz podobne informacje. Zakres przesyłanych danych zależy od podanych przez ciebie informacji i środowiska użytkowania.</p>
 <h3>Artykuł 9: AI i automatyzacja</h3>
 <p>Firma wykorzystuje technologię AI do ulepszania Usługi, ale nie wykorzystuje danych osobowych użytkowników do trenowania innych modeli AI. Firma zapewnia również przejrzystość w zakresie przetwarzania AI.</p>
 <h3>Artykuł 10: Usuwanie danych</h3>

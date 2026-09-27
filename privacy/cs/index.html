@@ -109,32 +109,49 @@
 <h2>Specifické nakládání v rámci služby</h2>
 <h3>Článek 8: Specifické nakládání v rámci služby</h3>
 <ol class="numbered">
-<li><span class="num">1.</span>Informace o kalendáři a událostech:</li>
+<li><span class="num">1.</span>Kalendáře, události, účty a nastavení</li>
 </ol>
-<p>Shromážděné informace se používají pouze v rámci zařízení k poskytování následujících funkcí a částečně se ukládají na externí servery spravované Společností.</p>
-<ul class="bullet">
-<li>Zobrazení a úprava kalendáře</li>
-<li>Zobrazení a úprava událostí</li>
-</ul>
+<p>Aby mohla zobrazovat, vytvářet, upravovat a synchronizovat kalendáře a události a zasílat o nich oznámení, zpracovává Společnost informace o kalendáři ve vašem zařízení a informace z Google Calendar získané a aktualizované prostřednictvím Google Calendar API. Pokud propojíte externí kalendář, například Google, spravují se tyto informace také v souladu se zásadami ochrany osobních údajů příslušného poskytovatele služby.</p>
+<p>Společnost používá Firebase Authentication a Firestore k ověřování účtů, synchronizaci vašeho profilu a nastavení aplikace, poskytování funkcí sdíleného kalendáře a ukládání šablon událostí. V závislosti na funkcích, které používáte, ukládá Společnost nastavení profilu, informace o zařízení, informace související se sdílením a názvy, místa, poznámky a nastavení opakování a oznámení u šablon událostí.</p>
+<p>Aby Společnost poskytovala integrační funkce a sdílení, ukládá ověřovací údaje potřebné pro integraci Google (přístupové a obnovovací tokeny) ve službě Firebase, kterou spravuje. Společnost nezískává ani neukládá heslo k vašemu účtu Google.</p>
 <ol class="numbered">
-<li><span class="num">2.</span>Když uživatel propojí svůj kalendář s externími cloudovými službami (iCloud, Kalendář Google, Outlook atd.), tyto informace se spravují v souladu se zásadami ochrany osobních údajů daného poskytovatele služeb.</li>
-<li><span class="num">3.</span>Nakládání s informacemi účtu Gmail</li>
+<li><span class="num">2.</span>Vytváření událostí pomocí AI, analýza obrázků a návrhy barev</li>
 </ol>
-<p>Společnost přistupuje pouze k minimálně nezbytným informacím (v rozsahu potřebném pro funkci sdílení kalendáře) prostřednictvím ověření OAuth od Google. Společnost nezískává ani neukládá hesla uživatelů. Shromážděné informace se používají výhradně k poskytování funkce sdílení a nejsou poskytovány třetím stranám.</p>
+<p>Při vytváření a analýze událostí pomocí AI používá Společnost text a obrázky, které zadáte nebo poskytnete, aby z nich vytvořila návrhy událostí.</p>
+<p>Při hlasovém zadávání převádí rozpoznávání řeči ve vašem zařízení řeč na text. Za účelem vytváření a analýzy událostí může být převedený text odeslán do Apple Private Cloud Compute nebo do Google Gemini prostřednictvím Firebase Cloud Functions. Způsob zpracování rozpoznávání řeči závisí na funkcích a nastaveních vašeho zařízení a operačního systému.</p>
+<p>Text, který zadáte přímo, a obrázky, které poskytnete za účelem vytváření událostí, se také zpracovávají v Apple Private Cloud Compute nebo v Google Gemini prostřednictvím Firebase Cloud Functions. Použitá služba zpracování závisí na faktorech, jako je podpora zařízení; jednoduchý text může být zpracován ve vašem zařízení.</p>
+<p>Návrhy barev událostí se obvykle zpracovávají ve vašem zařízení, pokud jsou vaše zařízení a verze operačního systému podporovány. Dostupné funkce a způsoby zpracování se liší podle zařízení, operačního systému a nastavení.</p>
 <ol class="numbered">
-<li><span class="num">4.</span>Údaje související s oznámeními</li>
+<li><span class="num">3.</span>Nákupy placených funkcí a přístupová oprávnění</li>
 </ol>
-<p>Informace o událostech zařízení a nastaveních oznámení se používají k zajištění připomenutí událostí a push oznámení. Informace používané pro oznámení se používají výhradně k poskytování funkcí Služby a nejsou poskytovány třetím stranám. Pro odesílání oznámení mohou být použity externí služby oznámení (např. Firebase Cloud Messaging, APNs), ale neobsahují obsah identifikovatelný osobně a zpracování probíhá bezpečným způsobem.</p>
+<p>K ověření a obnovení nákupů a správě přístupových oprávnění k placeným funkcím používá Společnost RevenueCat a odesílá informace, jako jsou identifikátory uživatelů a informace o nákupech.</p>
 <ol class="numbered">
-<li><span class="num">5.</span>Odvolání souhlasu s reklamou</li>
+<li><span class="num">4.</span>Odkazy s pozvánkami a atribuce</li>
 </ol>
-<p>Služba získává reklamní identifikátory (jako IDFA) pro reklamní účely na základě souhlasu uživatele. Pokud chcete odvolat souhlas s reklamou, použijte následující metody.</p>
-<ul class="bullet">
-<li>Odinstalace aplikace: smazání aplikace ze zařízení zastaví shromažďování informací pro reklamní účely.</li>
-<li>Použití placené verze: přechod na placenou verzi zastaví reklamy a shromažďování informací pro reklamní účely.</li>
-</ul>
-<p>Poloha pro počasí</p>
-<p>Když je počasí zapnuté, při aktualizaci předpovědi během používání aplikace získáme aktuální polohu a odešleme ji do Apple Weather přes náš server (Firebase). Zařízení ukládá poslední polohu a předpověď do mezipaměti nejvýše na tři hodiny; při vypnutí počasí nebo odhlášení se tyto údaje smažou. Neuchováváme historii polohy, neukládáme ji trvale na server, neposíláme ji analytickým službám ani nesledujeme polohu na pozadí.</p>
+<p>K vytváření odkazů s pozvánkami pro sdílené kalendáře, předávání informací o pozvánkách a měření kanálů získávání uživatelů používá Společnost Firebase Cloud Functions a AppsFlyer. Při vytvoření odkazu s pozvánkou odesílá Společnost do AppsFlyer informace, jako je zobrazované jméno zvoucího, název kalendáře, ID kalendáře a token pozvánky. Aby Společnost spojila získávání uživatelů s uživateli aplikace, odesílá do AppsFlyer také identifikátor přihlášeného uživatele. V závislosti na nastavení může toto zpracování zahrnovat také informace o zařízení, identifikátory, IP adresy a informace o instalacích a používání odkazů.</p>
+<ol class="numbered">
+<li><span class="num">5.</span>Připomenutí a push oznámení</li>
+</ol>
+<p>K poskytování připomenutí událostí, oznámení o aktualizacích sdíleného kalendáře a oznámení úkolů používá Společnost informace o událostech ve vašem zařízení, nastavení oznámení a tokeny oznámení. Oznámení se odesílají prostřednictvím Firebase Cloud Messaging (FCM) nebo Apple Push Notification service (APNs). Sdílená oznámení mohou obsahovat názvy událostí, data a časy, názvy kalendářů, zobrazovaná jména a názvy úkolů.</p>
+<ol class="numbered">
+<li><span class="num">6.</span>Používání, chyby, výkon, doručování konfigurace a prevence zneužití</li>
+</ol>
+<p>K analýze používání služby, vyšetřování chyb, měření výkonu, doručování konfigurace aplikace a prevenci zneužití používá Společnost Firebase Analytics, Crashlytics, Performance Monitoring, Remote Config a App Check. V závislosti na spuštěních aplikace a používání funkcí, nastaveních, souhlasu a prostředí zařízení odesílá Společnost jednotlivým službám informace, jako jsou identifikátory uživatelů, události interakcí, informace o aplikaci a zařízení, chyby, informace o výkonu a informace potřebné k ověření integrity aplikace.</p>
+<ol class="numbered">
+<li><span class="num">7.</span>Reklama</li>
+</ol>
+<p>Společnost používá Google AdMob k zobrazování reklam, správě souhlasu a měření výkonu reklam. Reklamní identifikátory a podobné informace se zpracovávají podle vašeho souhlasu, nastavení zařízení, nastavení aplikace a prostředí používání. Správa reklam a souhlasu se také řídí zásadami poskytovatele služby Google AdMob.</p>
+<p>Oprávnění k používání reklamních identifikátorů můžete změnit v nastavení zařízení. Placená verze přestane zobrazovat reklamy.</p>
+<ol class="numbered">
+<li><span class="num">8.</span>Vyhledávání míst</li>
+</ol>
+<p>Když používáte vyhledávání míst, odesílá Společnost vaše zadané vyhledávací dotazy, jazyk a v případě potřeby oblast vyhledávání založenou na vaší aktuální poloze do Google Places API, aby získala návrhy míst a podrobnosti o nich. Získané informace se používají k zadávání a zobrazování míst událostí.</p>
+<ol class="numbered">
+<li><span class="num">9.</span>Náhledy URL a dotazy</li>
+</ol>
+<p>Když použijete náhledy URL, vaše zařízení přistupuje k URL, aby získalo metadata, jako je název stránky, popis a obrázky, a zobrazilo náhled. Platí také zásady navštíveného webu.</p>
+<p>Ke komunikaci dochází také tehdy, když Společnost získává ze zdrojů informace potřebné k zobrazování oznámení, obsahu nápovědy, profilových obrázků a podobného obsahu; tyto zdroje získávají komunikační informace, jako je vaše IP adresa.</p>
+<p>Když odešlete dotaz, Společnost za účelem odpovědi a prošetření problémů odesílá do Firebase obsah zprávy, e-mailovou adresu pro odpověď, nastavení požadavku na odpověď, identifikátor přihlášeného uživatele, informace o aplikaci a zařízení, jazyková nastavení, stav Pro, diagnostické informace, přiložené obrázky a podobné informace. Odesílané údaje se liší podle toho, co zadáte, a podle prostředí používání.</p>
 <h3>Článek 9: AI a automatizace</h3>
 <p>Společnost používá technologii AI ke zlepšení Služby, ale nepoužívá osobní údaje uživatelů k trénování jiných AI modelů. Společnost také zajišťuje transparentnost ohledně zpracování AI.</p>
 <h3>Článek 10: Smazání dat</h3>
